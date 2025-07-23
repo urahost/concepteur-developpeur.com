@@ -7,6 +7,7 @@ import { getDictionary, LangProps } from "@/lib/dictionaries";
 import { ClientDictionary } from "@/components/contexts/dictionary-provider";
 import { locales } from "@/lib/locale";
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const sansFont = Space_Grotesk({
   subsets: ["latin"],
@@ -105,6 +106,7 @@ export default async function RootLayout({
             <main className="sm:container mx-auto w-[90vw] h-auto scroll-smooth">
               {children}
             </main>
+            <Analytics/>
             <Footer dict={dict} />
           </ThemeProvider>
         </ClientDictionary>
