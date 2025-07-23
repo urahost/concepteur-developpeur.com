@@ -6,7 +6,17 @@
       "Bash(copy:*)",
       "Bash(cp:*)",
       "Bash(mv:*)",
-      "Bash(robocopy:*)"
+      "Bash(robocopy:*)",
+      "Bash(touch:*)",
+      "Bash(ls:*)",
+      "Bash(npm run build:*)",
+      "Bash(timeout 15 npm run dev)",
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(gh pr create:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }

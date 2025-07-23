@@ -1,0 +1,329 @@
+---
+title: "Conventions de Code"
+description: "Guide complet des conventions de codage et standards adoptés par la promotion CDA Valenciennes P2 pour un code propre et maintenable."
+---
+
+
+Les conventions de code sont des règles et des standards qui permettent d'écrire du code cohérent, lisible et maintenable. Elles facilitent la collaboration en équipe et réduisent les erreurs.
+
+## 🎯 Pourquoi des Conventions de Code ?
+
+### Avantages principaux
+
+- **Lisibilité** : Code plus facile à comprendre
+- **Maintenance** : Modifications simplifiées
+- **Collaboration** : Travail d'équipe harmonieux
+- **Qualité** : Réduction des bugs et erreurs
+- **Professionnalisme** : Respect des standards industriels
+
+<Note>
+**Principe fondamental** : Le code est écrit une fois mais lu de nombreuses fois. Il doit être optimisé pour la lecture, pas pour l'écriture.
+</Note>
+
+## 📝 Conventions Générales
+
+### Nommage des Variables
+
+#### JavaScript/TypeScript
+
+```javascript
+// ✅ Bon - camelCase pour les variables et fonctions
+const userName = "john_doe";
+const calculateTotalPrice = (items) => { /* ... */ };
+
+// ✅ Bon - PascalCase pour les classes et composants
+class UserManager {}
+const UserProfile = () => { /* ... */ };
+
+// ✅ Bon - SCREAMING_SNAKE_CASE pour les constantes
+const API_BASE_URL = "https://api.example.com";
+const MAX_RETRY_ATTEMPTS = 3;
+
+// ❌ Mauvais - Nommage incohérent
+const user_name = "john"; // snake_case inapproprié
+const calculate_total = () => {}; // snake_case inapproprié
+const userprofile = () => {}; // pas de séparation
+```
+
+#### Python
+
+```python
+# ✅ Bon - snake_case pour les variables et fonctions
+user_name = "john_doe"
+def calculate_total_price(items):
+    pass
+
+# ✅ Bon - PascalCase pour les classes
+class UserManager:
+    pass
+
+# ✅ Bon - SCREAMING_SNAKE_CASE pour les constantes
+API_BASE_URL = "https://api.example.com"
+MAX_RETRY_ATTEMPTS = 3
+```
+
+### Nommage Descriptif
+
+```javascript
+// ❌ Mauvais - Noms non descriptifs
+const d = new Date();
+const u = users.filter(x => x.a);
+const calc = (a, b) => a * b * 0.2;
+
+// ✅ Bon - Noms descriptifs
+const currentDate = new Date();
+const activeUsers = users.filter(user => user.isActive);
+const calculateTaxAmount = (price, quantity) => price * quantity * TAX_RATE;
+```
+
+## 🏗️ Structure et Organisation
+
+### Organisation des Fichiers
+
+```
+src/
+├── components/           # Composants réutilisables
+│   ├── ui/              # Composants UI basiques
+│   ├── forms/           # Composants de formulaires
+│   └── layouts/         # Composants de mise en page
+├── pages/               # Pages de l'application
+├── services/            # Services et API
+├── utils/               # Fonctions utilitaires
+├── hooks/               # Hooks personnalisés (React)
+├── constants/           # Constantes globales
+└── types/               # Définitions de types (TypeScript)
+```
+
+### Organisation d'un Fichier
+
+```javascript
+// 1. Imports externes
+import React from 'react';
+import axios from 'axios';
+
+// 2. Imports internes
+import { Button } from '@/components/ui/button';
+import { validateEmail } from '@/utils/validation';
+
+// 3. Types et interfaces
+interface UserFormProps {
+  onSubmit: (user: User) => void;
+  initialData?: User;
+}
+
+// 4. Constantes
+const FORM_FIELDS = ['name', 'email', 'phone'];
+
+// 5. Composant principal
+export const UserForm: React.FC<UserFormProps> = ({ onSubmit, initialData }) => {
+  // Logique du composant
+};
+
+// 6. Export par défaut (si nécessaire)
+export default UserForm;
+```
+
+## 💬 Commentaires et Documentation
+
+### Règles pour les Commentaires
+
+```javascript
+// ❌ Mauvais - Commentaire évident
+const age = 25; // Définit l'âge à 25
+
+// ❌ Mauvais - Commentaire obsolète
+const users = getActiveUsers(); // Récupère tous les utilisateurs
+
+// ✅ Bon - Explique le "pourquoi"
+const retryDelay = 1000; // Délai en ms pour éviter le rate limiting de l'API
+
+// ✅ Bon - Explique la logique complexe
+const score = (likes * 2 + shares * 5 + comments * 3) / totalEngagements;
+// Formule de scoring pondérée : likes=2pts, shares=5pts, comments=3pts
+```
+
+### Documentation JSDoc
+
+```javascript
+/**
+ * Calcule le prix total avec les taxes et remises appliquées
+ * @param {number} basePrice - Prix de base du produit
+ * @param {number} taxRate - Taux de taxe (ex: 0.20 pour 20%)
+ * @param {number} [discount=0] - Remise optionnelle (ex: 0.10 pour 10%)
+ * @returns {number} Prix total calculé
+ * @throws {Error} Si le prix de base est négatif
+ * 
+ * @example
+ * const total = calculateTotalPrice(100, 0.20, 0.10);
+ * console.log(total); // 108 (100 + 20% taxe - 10% remise)
+ */
+function calculateTotalPrice(basePrice, taxRate, discount = 0) {
+  if (basePrice < 0) {
+    throw new Error('Le prix de base ne peut pas être négatif');
+  }
+  
+  const taxAmount = basePrice * taxRate;
+  const discountAmount = basePrice * discount;
+  return basePrice + taxAmount - discountAmount;
+}
+```
+
+## 🎨 Formatage et Style
+
+### Indentation et Espacement
+
+```javascript
+// ✅ Bon - Indentation cohérente (2 espaces)
+function processUser(user) {
+  if (user.isActive) {
+    const profile = {
+      name: user.name,
+      email: user.email,
+      lastLogin: new Date()
+    };
+    
+    return updateUserProfile(profile);
+  }
+  
+  return null;
+}
+
+// ✅ Bon - Espacement autour des opérateurs
+const result = (a + b) * c / d;
+const isValid = user.age >= 18 && user.hasConsent;
+```
+
+### Longueur des Lignes
+
+```javascript
+// ❌ Mauvais - Ligne trop longue
+const message = `Bonjour ${user.firstName} ${user.lastName}, votre commande #${order.id} a été traitée avec succès et sera livrée à l'adresse ${user.address.street} ${user.address.city}`;
+
+// ✅ Bon - Ligne divisée de manière lisible
+const message = [
+  `Bonjour ${user.firstName} ${user.lastName},`,
+  `votre commande #${order.id} a été traitée avec succès`,
+  `et sera livrée à l'adresse ${user.address.street} ${user.address.city}`
+].join(' ');
+```
+
+## 🔧 Bonnes Pratiques par Langage
+
+### JavaScript/TypeScript
+
+```javascript
+// ✅ Utiliser const/let au lieu de var
+const API_URL = 'https://api.example.com';
+let currentUser = null;
+
+// ✅ Déstructuration pour extraire les propriétés
+const { name, email, age } = user;
+const [first, ...rest] = items;
+
+// ✅ Template literals pour la concaténation
+const greeting = `Bonjour ${user.name}, vous avez ${user.messages.length} messages`;
+
+// ✅ Arrow functions pour les fonctions courtes
+const multiply = (a, b) => a * b;
+const isAdult = user => user.age >= 18;
+
+// ✅ Gestion d'erreur explicite
+try {
+  const data = await fetchUserData(id);
+  return processData(data);
+} catch (error) {
+  console.error('Erreur lors de la récupération des données:', error);
+  throw new Error('Impossible de charger les données utilisateur');
+}
+```
+
+### CSS/SCSS
+
+```css
+/* ✅ Bon - Sélecteurs descriptifs et modulaires */
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.user-profile__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.user-profile__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile__name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ✅ Bon - Variables CSS pour la cohérence */
+:root {
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+}
+```
+
+## 📋 Checklist des Conventions
+
+### Avant de Commiter
+
+- [ ] **Nommage** : Variables et fonctions ont des noms descriptifs
+- [ ] **Cohérence** : Respect des conventions de l'équipe/projet
+- [ ] **Commentaires** : Code complexe documenté
+- [ ] **Formatage** : Code correctement indenté et formaté
+- [ ] **Imports** : Organisés et sans imports inutiles
+- [ ] **Constantes** : Valeurs magiques remplacées par des constantes nommées
+- [ ] **Fonctions** : Une responsabilité par fonction
+- [ ] **Fichiers** : Taille raisonnable et organisation logique
+
+<Note type="warning">
+**Important** : Ces conventions doivent être adaptées selon le projet et l'équipe. L'important est d'être cohérent dans tout le projet.
+</Note>
+
+## 🛠️ Outils pour Faire Respecter les Conventions
+
+### ESLint (JavaScript/TypeScript)
+
+```json
+// .eslintrc.json
+{
+  "extends": ["eslint:recommended", "@typescript-eslint/recommended"],
+  "rules": {
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-unused-vars": "error",
+    "prefer-const": "error",
+    "no-var": "error"
+  }
+}
+```
+
+### Prettier (Formatage automatique)
+
+```json
+// .prettierrc
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false
+}
+```
+
+---
+
+Les conventions de code sont un investissement qui rapporte sur le long terme. Elles rendent le développement plus agréable et le code plus professionnel.

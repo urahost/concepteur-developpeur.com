@@ -1,0 +1,446 @@
+---
+title: "Pre-design - Analysis and Planning"
+description: "Pre-design methodology to analyze needs, plan architecture, and effectively prepare for the development phase."
+---
+
+
+Pre-design is a crucial phase that precedes development. It allows for in-depth analysis of needs, architecture planning, and making the right technical decisions before starting to code.
+
+## 🎯 Pre-design Objectives
+
+### Why Pre-design?
+
+- **Reduce risks**: Identify potential problems early
+- **Optimize costs**: Avoid expensive refactoring
+- **Improve quality**: Design solid architecture
+- **Accelerate development**: Clarify objectives and constraints
+- **Facilitate communication**: Align the entire team
+
+<Note>
+**Key principle**: "An hour of planning saves ten hours of development." Pre-design is a profitable investment.
+</Note>
+
+### Phase Deliverables
+
+```markdown
+# Pre-design Deliverables
+
+## Analysis Documents
+- [ ] User needs analysis
+- [ ] Functional specifications
+- [ ] Technical and business constraints
+- [ ] Risk analysis
+
+## Design Documents
+- [ ] System architecture
+- [ ] Data model
+- [ ] Interfaces and wireframes
+- [ ] Test plan
+
+## Planning Documents
+- [ ] Product roadmap
+- [ ] Development planning
+- [ ] Resource allocation
+- [ ] Deployment strategy
+```
+
+## 📊 Needs Analysis
+
+### Gathering Techniques
+
+#### 1. User Interviews
+
+```markdown
+# User Interview Guide
+
+## Preparation
+- [ ] Identify key personas
+- [ ] Prepare open-ended questions
+- [ ] Define interview objectives
+- [ ] Plan note-taking/recording
+
+## Typical Questions
+### Context
+- "Can you describe your typical day?"
+- "What tools do you currently use?"
+- "What are your main frustrations?"
+
+### Needs
+- "What would you ideally like to accomplish?"
+- "What would save you time?"
+- "What is absolutely essential?"
+
+### Priorities
+- "If you could only have one feature, which one?"
+- "What would prevent you from using the tool?"
+```
+
+#### 2. Co-design Workshops
+
+```markdown
+# Design Thinking Workshop
+
+## Phase 1: Empathy (30 min)
+- Personas mapping
+- User journey mapping
+- Pain points identification
+
+## Phase 2: Definition (20 min)
+- Problem statement
+- How Might We questions
+- Success criteria
+
+## Phase 3: Ideation (40 min)
+- Solution brainstorming
+- Dot voting
+- Solution clustering
+
+## Phase 4: Prototype (60 min)
+- Sketching
+- Paper prototyping
+- Story boarding
+
+## Phase 5: Test (30 min)
+- User feedback
+- Iteration planning
+```
+
+### Needs Documentation
+
+#### Needs Expression Template
+
+```markdown
+# Needs Expression - [Project Name]
+
+## 1. Business Context
+### Problem
+[Description of the problem to solve]
+
+### Stakes
+- **Financial**: [Budget impact, expected ROI]
+- **Strategic**: [Competitive positioning]
+- **Operational**: [Process improvement]
+
+### Target Users
+| Persona | Profile | Main Needs | Constraints |
+|---------|--------|------------|-------------|
+| End User | [Description] | [Needs list] | [Limitations] |
+| Administrator | [Description] | [Needs list] | [Limitations] |
+| Manager | [Description] | [Needs list] | [Limitations] |
+
+## 2. Functional Requirements
+### Critical Features
+- [ ] **F1**: [Detailed description]
+  - Acceptance criteria: [List]
+  - Priority: Critical
+  - Complexity: [Estimate]
+
+### Important Features
+- [ ] **F2**: [Detailed description]
+
+### Desirable Features
+- [ ] **F3**: [Detailed description]
+
+## 3. Non-Functional Requirements
+### Performance
+- Response time: < 2 seconds
+- Throughput: 1000 simultaneous users
+- Availability: 99.9%
+
+### Security
+- Authentication: OAuth 2.0
+- Encryption: TLS 1.3
+- Personal data: GDPR compliant
+
+### Compatibility
+- Browsers: Chrome, Firefox, Safari, Edge
+- Devices: Desktop, tablet, mobile
+- OS: Windows, macOS, Linux
+```
+
+## 🏗️ Architecture and Design
+
+### System Modeling
+
+#### Architecture Layers
+
+```markdown
+# 3-Tier Architecture
+
+## Presentation Layer
+- **Frontend**: React.js / Vue.js
+- **Mobile**: React Native / Flutter
+- **Responsive**: Bootstrap / Tailwind CSS
+
+## Business Logic Layer
+- **API**: Node.js / Python / Java
+- **Authentication**: JWT / OAuth 2.0
+- **Business Logic**: Business services
+- **Validation**: Business rules
+
+## Data Layer
+- **Main Database**: PostgreSQL / MySQL
+- **Cache**: Redis / Memcached
+- **Files**: AWS S3 / Azure Blob
+- **Search**: Elasticsearch
+```
+
+### Data Modeling
+
+#### Conceptual Model
+
+```sql
+-- Example: Project Management Application
+
+-- Main Entities
+User {
+  id: UUID (PK)
+  email: STRING UNIQUE
+  password_hash: STRING
+  first_name: STRING
+  last_name: STRING
+  role: ENUM(USER, ADMIN, MANAGER)
+  created_at: TIMESTAMP
+  updated_at: TIMESTAMP
+}
+
+Project {
+  id: UUID (PK)
+  name: STRING
+  description: TEXT
+  status: ENUM(DRAFT, ACTIVE, COMPLETED, ARCHIVED)
+  owner_id: UUID (FK -> User.id)
+  start_date: DATE
+  end_date: DATE
+  created_at: TIMESTAMP
+}
+
+Task {
+  id: UUID (PK)
+  title: STRING
+  description: TEXT
+  status: ENUM(TODO, IN_PROGRESS, DONE)
+  priority: ENUM(LOW, MEDIUM, HIGH, URGENT)
+  project_id: UUID (FK -> Project.id)
+  assigned_to: UUID (FK -> User.id)
+  due_date: DATE
+  created_at: TIMESTAMP
+}
+
+-- Relations
+ProjectMember {
+  project_id: UUID (FK -> Project.id)
+  user_id: UUID (FK -> User.id)
+  role: ENUM(MEMBER, LEAD, OBSERVER)
+  joined_at: TIMESTAMP
+}
+```
+
+### Interface Design
+
+#### Wireframes and Mockups
+
+```markdown
+# UI/UX Design Process
+
+## 1. User Journey Mapping
+- [ ] Identify main user paths
+- [ ] Map steps and touchpoints
+- [ ] Identify friction moments
+- [ ] Define emotions at each step
+
+## 2. Information Architecture
+- [ ] Existing content inventory
+- [ ] Categorization and hierarchy
+- [ ] Navigation and menu structure
+- [ ] Taxonomy and labeling
+
+## 3. Wireframing
+- [ ] Low-fidelity sketch (paper/balsamiq)
+- [ ] Main page structure
+- [ ] Key element placement
+- [ ] Inter-screen navigation
+
+## 4. Prototyping
+- [ ] High-fidelity mockups (Figma/Sketch)
+- [ ] Design system and components
+- [ ] Interactions and animations
+- [ ] User testing on prototype
+```
+
+#### Design System
+
+```markdown
+# Design System - [Project Name]
+
+## Colors
+### Primary Colors
+- **Primary**: #3B82F6 (Main blue)
+- **Secondary**: #64748B (Secondary gray)
+- **Success**: #10B981 (Success green)
+- **Warning**: #F59E0B (Warning orange)
+- **Error**: #EF4444 (Error red)
+
+### Background Colors
+- **Background**: #FFFFFF (White)
+- **Surface**: #F8FAFC (Very light gray)
+- **Border**: #E2E8F0 (Border gray)
+
+## Typography
+### Main Font
+- **Font Family**: Inter, sans-serif
+- **Weights**: 400 (Regular), 500 (Medium), 600 (Semi-bold), 700 (Bold)
+
+### Hierarchy
+- **H1**: 2.25rem (36px), Semi-bold
+- **H2**: 1.875rem (30px), Semi-bold
+- **H3**: 1.5rem (24px), Medium
+- **Body**: 1rem (16px), Regular
+- **Caption**: 0.875rem (14px), Regular
+
+## Spacing
+- **XS**: 0.25rem (4px)
+- **S**: 0.5rem (8px)
+- **M**: 1rem (16px)
+- **L**: 1.5rem (24px)
+- **XL**: 2rem (32px)
+- **XXL**: 3rem (48px)
+```
+
+## 📋 Risk Analysis
+
+### Risk Identification
+
+```markdown
+# Risk Matrix
+
+## Technical Risks
+| Risk | Probability | Impact | Criticality | Mitigation |
+|------|-------------|--------|-------------|------------|
+| Insufficient performance | Medium | High | **High** | Load testing, scalable architecture |
+| Data security | Low | Very High | **High** | Security audit, encryption |
+| Browser compatibility | High | Medium | **Medium** | Cross-browser testing, polyfills |
+| Third-party API integration | Medium | Medium | **Medium** | Fallback API, error handling |
+
+## Project Risks
+| Risk | Probability | Impact | Criticality | Mitigation |
+|------|-------------|--------|-------------|------------|
+| Delivery delay | Medium | High | **High** | Planning buffer, prioritization |
+| Requirements change | High | Medium | **Medium** | Agile method, MVP |
+| Unavailable resources | Low | High | **Medium** | Backup plan, training |
+| Budget exceeded | Medium | High | **High** | Regular monitoring, scope control |
+```
+
+### Contingency Plan
+
+```markdown
+# Contingency Plan
+
+## If Insufficient Performance
+### Immediate Actions
+- [ ] Complete performance audit
+- [ ] Identify bottlenecks
+- [ ] Optimize critical code
+
+### Long-term Actions
+- [ ] Architecture refactoring
+- [ ] Implement caching
+- [ ] Migrate to more powerful infrastructure
+
+## If Development Delay
+### Immediate Actions
+- [ ] Prioritize MVP features
+- [ ] Temporarily increase resources
+- [ ] Reduce non-critical scope
+
+### Long-term Actions
+- [ ] Revise estimates
+- [ ] Improve processes
+- [ ] Team training
+```
+
+## 🎯 Validation and Approval
+
+### Validation Checklist
+
+```markdown
+# Pre-design Validation
+
+## Analysis Documents
+- [ ] **User needs**: Validated by stakeholders
+- [ ] **Functional specifications**: Complete and unambiguous
+- [ ] **Technical constraints**: Identified and documented
+- [ ] **Risk analysis**: Completed with mitigation plans
+
+## Technical Design
+- [ ] **System architecture**: Validated by technical team
+- [ ] **Data model**: Coherent and normalized
+- [ ] **User interfaces**: Validated by end users
+- [ ] **Test strategy**: Defined and planned
+
+## Planning
+- [ ] **Product roadmap**: Approved by management
+- [ ] **Development planning**: Realistic and detailed
+- [ ] **Budget**: Validated and allocated
+- [ ] **Team**: Assembled and trained
+
+## Success Criteria
+- [ ] **Metrics**: Defined and measurable
+- [ ] **Acceptance criteria**: Clear for each feature
+- [ ] **Definition of Done**: Established for the team
+```
+
+<Note type="success">
+**Objective**: At the end of pre-design, all participants should have a clear and shared vision of the project, its objectives, architecture, and implementation.
+</Note>
+
+## 🚀 Transition to Development
+
+### Team Preparation
+
+```markdown
+# Development Team Onboarding
+
+## Documentation to Provide
+- [ ] **Complete specifications**: Functional and technical
+- [ ] **Mockups and designs**: Complete design system
+- [ ] **Detailed architecture**: Diagrams and technical documentation
+- [ ] **Coding standards**: Guidelines and best practices
+
+## Necessary Training
+- [ ] **Project presentation**: Context, objectives, users
+- [ ] **Technical architecture**: Technologies, patterns, conventions
+- [ ] **Tools and processes**: Git workflow, CI/CD, collaboration tools
+- [ ] **Quality standards**: Tests, code review, documentation
+
+## Environments to Prepare
+- [ ] **Development**: Standardized local configuration
+- [ ] **Integration**: Automated testing environment
+- [ ] **Staging**: Client validation environment
+- [ ] **Production**: Deployment infrastructure
+```
+
+### Monitoring Metrics
+
+```markdown
+# Development KPIs
+
+## Progress
+- **Velocity**: Story points completed per sprint
+- **Burndown**: Progress toward objectives
+- **Scope Creep**: Scope evolution
+
+## Quality
+- **Code Coverage**: Percentage of tested code
+- **Bug Rate**: Number of bugs per feature
+- **Technical Debt**: Accumulated technical debt
+
+## Performance
+- **Lead Time**: Feature completion time
+- **Cycle Time**: Time between start and end of development
+- **Deployment Frequency**: Production deployment frequency
+```
+
+---
+
+Successful pre-design is the foundation of a successful project. It transforms a vague idea into a clear and achievable action plan!

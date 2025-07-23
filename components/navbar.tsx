@@ -49,14 +49,6 @@ export function Navbar({ dict }: { dict: Dictionary }) {
               >
                 <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
               </Link>
-              <Link
-                href="#"
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "icon",
-                })}
-              >
-              </Link>
               <ModeToggle dict={dict} />
             </div>
           </div>

@@ -1,0 +1,512 @@
+---
+title: "Prettier - Formatage Automatique de Code"
+description: "Guide complet sur Prettier, l'outil de formatage automatique qui garantit un style de code cohérent et une meilleure lisibilité dans vos projets."
+---
+
+
+Prettier est un formateur de code opinionated qui analyse votre code et le réimprime avec ses propres règles de style, garantissant ainsi une cohérence parfaite dans tout votre projet.
+
+## 🎯 Qu'est-ce que Prettier ?
+
+### Définition
+
+**Prettier** est un outil de formatage de code qui :
+- Analyse la structure de votre code
+- Applique des règles de formatage cohérentes
+- Réimprime le code avec un style uniforme
+- Élimine les débats sur le style au sein des équipes
+
+<Note>
+**Philosophie** : "You press save and code is formatted. No need to discuss style in code review. Saves you time and energy."
+</Note>
+
+### Langages Supportés
+
+- JavaScript, TypeScript, JSX, TSX
+- CSS, SCSS, Less
+- HTML, Vue
+- JSON, YAML
+- Markdown
+- GraphQL
+
+## 🚀 Installation et Configuration
+
+### Installation
+
+```bash
+# Installation locale (recommandée)
+npm install --save-dev prettier
+
+# Installation globale
+npm install -g prettier
+
+# Avec Yarn
+yarn add --dev prettier
+```
+
+### Configuration de Base
+
+```json
+// .prettierrc
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSpacing": true,
+  "arrowParens": "always"
+}
+```
+
+### Formats de Configuration
+
+```javascript
+// .prettierrc.js
+module.exports = {
+  semi: true,
+  trailingComma: 'es5',
+  singleQuote: true,
+  printWidth: 80,
+  tabWidth: 2,
+  useTabs: false,
+};
+```
+
+```yaml
+# .prettierrc.yaml
+semi: true
+trailingComma: "es5"
+singleQuote: true
+printWidth: 80
+tabWidth: 2
+useTabs: false
+```
+
+## ⚙️ Options de Configuration
+
+### Options Principales
+
+```json
+{
+  "printWidth": 80,           // Longueur maximale d'une ligne
+  "tabWidth": 2,              // Nombre d'espaces par niveau d'indentation
+  "useTabs": false,           // Utiliser des tabs au lieu d'espaces
+  "semi": true,               // Ajouter des points-virgules
+  "singleQuote": true,        // Utiliser des guillemets simples
+  "quoteProps": "as-needed",  // Guillemets sur les propriétés d'objets
+  "trailingComma": "es5",     // Virgules finales
+  "bracketSpacing": true,     // Espaces dans les brackets d'objets
+  "arrowParens": "always"     // Parenthèses autour des paramètres arrow functions
+}
+```
+
+### Exemples de Formatage
+
+#### JavaScript/TypeScript
+
+```javascript
+// Avant Prettier
+const user={name:"John",age:30,city:"Paris"};
+const greet=(name,age)=>`Hello ${name}, you are ${age} years old`;
+
+// Après Prettier
+const user = { name: 'John', age: 30, city: 'Paris' };
+const greet = (name, age) => `Hello ${name}, you are ${age} years old`;
+```
+
+#### CSS
+
+```css
+/* Avant Prettier */
+.button{background-color:#007bff;color:white;padding:10px 20px;border:none;}
+
+/* Après Prettier */
+.button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+}
+```
+
+#### JSON
+
+```json
+// Avant Prettier
+{"name":"MyProject","version":"1.0.0","dependencies":{"react":"^18.0.0","prettier":"^2.8.0"}}
+
+// Après Prettier
+{
+  "name": "MyProject",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "^18.0.0",
+    "prettier": "^2.8.0"
+  }
+}
+```
+
+## 🎨 Intégration avec les Éditeurs
+
+### Visual Studio Code
+
+#### Extension Prettier
+
+1. Installer l'extension "Prettier - Code formatter"
+2. Configurer comme formateur par défaut
+
+```json
+// .vscode/settings.json
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "prettier.requireConfig": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
+
+### WebStorm/IntelliJ
+
+1. Aller dans `Settings > Tools > File Watchers`
+2. Ajouter un nouveau watcher pour Prettier
+3. Ou installer le plugin Prettier
+
+### Vim/Neovim
+
+```vim
+" Avec vim-prettier
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.scss,*.json,*.md PrettierAsync
+```
+
+## 🔧 Scripts NPM
+
+```json
+// package.json
+{
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:staged": "pretty-quick --staged",
+    "format:js": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "format:css": "prettier --write '**/*.{css,scss,less}'",
+    "format:json": "prettier --write '**/*.json'"
+  }
+}
+```
+
+### Utilisation
+
+```bash
+# Formater tout le projet
+npm run format
+
+# Vérifier le formatage sans modifier
+npm run format:check
+
+# Formater seulement les fichiers stagés (Git)
+npm run format:staged
+
+# Formater des fichiers spécifiques
+npx prettier --write src/components/Button.js
+npx prettier --write "src/**/*.{js,jsx,ts,tsx}"
+```
+
+## 🚫 Fichier .prettierignore
+
+```gitignore
+# .prettierignore
+node_modules
+build
+dist
+coverage
+*.min.js
+*.min.css
+public/
+.next/
+.nuxt/
+.vuepress/dist
+.cache
+package-lock.json
+yarn.lock
+```
+
+## 🤝 Intégration avec ESLint
+
+### Installation
+
+```bash
+npm install --save-dev eslint-config-prettier eslint-plugin-prettier
+```
+
+### Configuration ESLint
+
+```json
+// .eslintrc.json
+{
+  "extends": [
+    "eslint:recommended",
+    "prettier" // Doit être en dernier
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
+```
+
+### Configuration Alternative (Recommandée)
+
+```json
+// .eslintrc.json - Configuration séparée
+{
+  "extends": [
+    "eslint:recommended"
+  ]
+}
+```
+
+Puis utiliser ESLint pour les règles de code et Prettier pour le formatage.
+
+## 🔄 Git Hooks avec Husky
+
+### Installation
+
+```bash
+npm install --save-dev husky lint-staged
+npx husky install
+```
+
+### Configuration
+
+```json
+// package.json
+{
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,scss,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
+```
+
+### Script de Hook
+
+```bash
+#!/bin/sh
+# .husky/pre-commit
+. "$(dirname "$0")/_/husky.sh"
+
+npx lint-staged
+```
+
+## 🎯 Configurations Recommandées
+
+### Pour React/TypeScript
+
+```json
+// .prettierrc
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "endOfLine": "lf"
+}
+```
+
+### Pour Vue.js
+
+```json
+// .prettierrc
+{
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "vueIndentScriptAndStyle": true
+}
+```
+
+### Pour Node.js
+
+```json
+// .prettierrc
+{
+  "semi": true,
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "arrowParens": "avoid"
+}
+```
+
+## 🔍 Débogage et Résolution de Problèmes
+
+### Vérifier la Configuration
+
+```bash
+# Voir quelle configuration Prettier utilise
+npx prettier --find-config-path src/index.js
+
+# Afficher la configuration complète
+npx prettier --show-config src/index.js
+```
+
+### Problèmes Courants
+
+#### Conflit avec ESLint
+
+```bash
+# Identifier les règles en conflit
+npx eslint-config-prettier src/index.js
+```
+
+#### Fichiers Non Formatés
+
+```bash
+# Vérifier si un fichier est ignoré
+npx prettier --check src/index.js --loglevel debug
+```
+
+#### Performance
+
+```bash
+# Utiliser le cache pour améliorer les performances
+npx prettier --write . --cache
+```
+
+## 📊 Intégration CI/CD
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/format.yml
+name: Format Check
+
+on: [push, pull_request]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Check formatting
+      run: npm run format:check
+```
+
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml
+format_check:
+  stage: test
+  image: node:18
+  script:
+    - npm ci
+    - npm run format:check
+  only:
+    - merge_requests
+    - master
+```
+
+## 🎓 Bonnes Pratiques
+
+### Configuration d'Équipe
+
+1. **Décider ensemble** : Toute l'équipe doit approuver la configuration
+2. **Commencer simple** : Utiliser la configuration par défaut au début
+3. **Documenter** : Expliquer les choix de configuration dans le README
+4. **Être cohérent** : Appliquer à tous les projets de l'équipe
+
+### Règles d'Or
+
+- **Ne pas débattre du style** : Laisser Prettier décider
+- **Formater automatiquement** : Utiliser les hooks Git et l'IDE
+- **Être pragmatique** : Parfois désactiver pour du code généré
+- **Mettre à jour régulièrement** : Suivre les nouvelles versions
+
+<Note type="success">
+**Avantage principal** : Prettier élimine complètement les discussions sur le style de code lors des revues, permettant de se concentrer sur la logique et l'architecture.
+</Note>
+
+## 🔧 Configuration Avancée
+
+### Overrides par Type de Fichier
+
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "printWidth": 200
+      }
+    },
+    {
+      "files": "*.md",
+      "options": {
+        "proseWrap": "always",
+        "printWidth": 70
+      }
+    }
+  ]
+}
+```
+
+### Plugins Personnalisés
+
+```bash
+# Plugin pour XML
+npm install --save-dev @prettier/plugin-xml
+
+# Plugin pour PHP
+npm install --save-dev @prettier/plugin-php
+```
+
+```json
+{
+  "plugins": ["@prettier/plugin-xml", "@prettier/plugin-php"]
+}
+```
+
+---
+
+Prettier transforme le formatage de code d'une corvée en automatisme, permettant aux développeurs de se concentrer sur ce qui compte vraiment : la logique et la créativité !

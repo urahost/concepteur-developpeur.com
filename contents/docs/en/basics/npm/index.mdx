@@ -1,0 +1,232 @@
+---
+title: "NPM - Node Package Manager"
+description: "Discover NPM, the essential Node.js package manager for every JavaScript developer. Learn to manage your dependencies efficiently."
+---
+
+## What is Npm (Node Package Manager)
+
+Npm is a **node package manager** used to import or publish Node packages with other developers who use Npm.
+
+Npm is divided into 3 major parts:
+
+### 1. Npm Website
+
+The [Npm](https://www.npmjs.com/) website is useful to know which Node packages are available on the Registry.
+
+### 2. CLI (Command Line Interface)
+
+The CLI is the biggest part of Npm, because it's by the CLI that you'll **interact with Npm** and with the registry to **import packages** or **publish your packages**.
+
+### 3. Npm Registry
+
+The **Npm registry** is a kind of huge **database** that stores **complete functional applications** and mostly **node packages** that you can **download** to use or **adapt** them to your needs.
+
+## What is Npx (Node Package Executer)
+
+Npx is a **Node package executer**.
+Npx allows you to run remote packages, that means you don't have to **download** them to **run** them, you can just run packages remotely by your **CLI** from the **registry**, it can be useful to run **complete functional applications**.
+
+<Note>
+Generally, we prefer to perform remote runs on light applications.
+</Note>
+
+## Node Packages
+
+A Node package is a file or a folder described by a file named **package.json** (most often a folder).
+
+The **package.json** file will provide several information about your package, that's why you must fill it carefully with detailed information.
+
+A Node package can be public or private, [Read more about package visibility](https://docs.npmjs.com/about-private-packages), it can also be restrained to a particular scope. [Read more about packages scopes](https://docs.npmjs.com/about-scopes)
+
+A Node package can be all of the following (and even more):
+
+1. A file or a folder described by a **package.json** file
+2. A compressed file containing (1.)
+3. An URL pointing to (2.)
+4. A URL of GitHub repository that when cloned results in something formed as (1.)
+
+## Node Modules
+
+Node modules are dependencies that your package may need to run, or just used for the development cycle of your package/application.
+
+A Node Module can be:
+
+- A folder
+- A `.js` file
+
+You can see modules in the `node_modules` folder.
+
+<Note type="warning">
+A node module can be incompletely downloaded for some reason, in that case, it's recommended to remove the `node_modules` folder and reinstall packages.
+</Note>
+
+As an image is worth a thousand words:
+
+<Image src="/images/docs/assets/heavy-modules.png" alt="Humorous illustration showing the enormous size of the node_modules folder" />
+
+This image explains how heavy Node modules are.
+
+<Note type="warning">
+It's highly recommended not to forget omitting the `node_modules` folder in your `.gitignore` to not push them to your remote repository.
+</Note>
+
+## The package.json file
+
+As explained above, the **package.json** file is essential to your Node package.
+
+This file is like a map to your package, you'll provide many information in this file.
+
+```json
+{
+  "name": "Your package name",
+  "version": "Your package version",
+  "description": "The package description",
+  "keywords": ["Optional field for package discovery"],
+  "homepage": "Reference page of your package",
+  "bugs": "Where users report bugs",
+  "author": "Some information about you",
+  "main": "Application entry point (usually index.js)",
+  "scripts": {
+    "test": "Advanced configuration for your package"
+  },
+  "dependencies": {
+    "express": "4.18.3"
+  },
+  "devDependencies": {
+    "winston": "^2.0.20"
+  },
+  "private": true
+}
+```
+
+Npm will set default values to skipped fields, for instance, for the `script` field, Npm will set a test default value for this field.
+
+## Semantic Versioning
+
+Semantic Versioning is a standard that you should follow when you release significant modifications to your packages.
+
+It's recommended to publish your changes with different versions, changing the `version` field in your `package.json` file.
+
+That way other developers using your package can follow what changes you bring for each version.
+
+To understand the following, you must understand some terms:
+
+- **MAJOR**: A version that's not backwards compatible, which brings breaking changes
+- **MINOR**: A version that brings some changes (like adding a new feature), but keeps your package backwards compatible
+- **PATCH**: A version that brings bug fixes and keeps backwards compatible (most often)
+
+### Semantic versioning specifications
+
+- It's recommended to start your package development at `1.0.0` version
+- When you want to release PATCH changes, your package will pass to `1.0.1` version
+- When you want to release MINOR changes, your package will pass to `1.1.0` version (PATCH digit returned to 0)
+- When you want to release MAJOR changes, your package will pass to `2.0.0` version (MINOR digit returned to 0)
+
+<Note>
+Digits aren't limited to 9, a version `2.3.19` is completely correct.
+</Note>
+
+You can [learn more](https://docs.npmjs.com/about-semantic-versioning#using-semantic-versioning-to-specify-update-types-your-package-can-accept) about semantic versioning specifications.
+
+## Differences between `dependencies` and `devDependencies`
+
+The field `dependencies` allows you to list which dependencies your package will need to run.
+The field `devDependencies` allows you to list which dependencies your package will need to work in the development phase.
+
+### Example
+
+Let's take an example, imagine that you want to bake a cake:
+
+To prepare your cake what do you **need**?
+Maybe a fork to beat eggs.
+
+Ok, but you can also take this fork to eat your cake.
+
+In that example, that fork is a `devDependency` **AND** a `dependency`.
+
+Because you'll need this fork to prepare it and to eat it.
+
+## The package-lock.json file
+
+The `package-lock.json` file is automatically generated by Npm when an operation on the `node_modules` tree occurs.
+The `package-lock.json` will contain a reliable description of the evolution of the `node_modules` tree.
+
+This file is supposed to be included in the repo, it can be useful to:
+
+- Obtain only one version of `node_modules` tree and ensure continuous integration principles
+- Obtain an easy way to retrieve `node_modules` states
+- Obtain better visibility on changes of dependencies tree
+- Optimize dependencies installation, to not redownload already installed dependencies
+
+## Essential Commands
+
+### Initialize a Node Project
+
+If you wish to initialize a Node project, you'll need to type this command:
+
+```bash
+npm init
+```
+
+This command has to be executed in the root folder of your project.
+
+It will ask you some parameters and create the `package.json` file.
+
+### Installing dependencies
+
+#### Production dependencies
+
+You'll certainly need to import dependencies in your project, to do that, use the command:
+
+```bash
+npm install <package_name>
+# or
+npm i <package_name>
+```
+
+Let's take a real example:
+
+```bash
+npm install express
+```
+
+This command will download Express library files into the `node_modules` folder (folder that will be automatically created if it doesn't exist yet).
+
+#### Development dependencies
+
+If you wish to download dependencies only for the development phase, you must know this flag:
+
+```bash
+npm install <package_name> --save-dev
+```
+
+Real example:
+
+```bash
+npm install winston --save-dev
+```
+
+This command will download `Winston` in your `node_modules` and define it as `devDependencies` in your `package.json` file.
+
+#### Reinstalling dependencies
+
+In case you want to import a Node project without `node_modules` or you lose yours for some reason, you could need to redownload all dependencies, for that case, you should know this command:
+
+```bash
+npm install
+```
+
+This command will read `dependencies` and `devDependencies` and download each package.
+
+<Note>
+You can use the command `npm install --dev` to download only development dependencies.
+</Note>
+
+## References
+
+- [What's Npm](https://www.w3schools.com/whatis/whatis_npm.asp)
+- [What's Npx](https://www.geeksforgeeks.org/what-are-the-differences-between-npm-and-npx/)
+- [Node modules & Node packages](https://docs.npmjs.com/about-packages-and-modules)
+- [The package.json file](https://docs.npmjs.com/cli/v8/configuring-npm/package-json)
+- [Semantic versioning](https://semver.org/)
+- [The package-lock.json file](https://docs.npmjs.com/cli/v8/configuring-npm/package-lock-json)
