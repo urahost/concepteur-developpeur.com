@@ -50,6 +50,17 @@ export const ROUTES: EachRoute[] = [
   },
 ];
 
+export const BOTTOM_ROUTES: EachRoute[] = [
+  {
+    title: "contributing",
+    href: "/contributing",
+  },
+  {
+    title: "credits",
+    href: "/credits",
+  },
+];
+
 type Page = { title: string; href: string };
 
 function getRecurrsiveAllLinks(node: EachRoute) {
@@ -64,4 +75,7 @@ function getRecurrsiveAllLinks(node: EachRoute) {
   return ans;
 }
 
-export const page_routes = ROUTES.map((it) => getRecurrsiveAllLinks(it)).flat();
+const main_routes = ROUTES.map((it) => getRecurrsiveAllLinks(it)).flat();
+const bottom_routes = BOTTOM_ROUTES.map((it) => getRecurrsiveAllLinks(it)).flat();
+
+export const page_routes = [...main_routes, ...bottom_routes];

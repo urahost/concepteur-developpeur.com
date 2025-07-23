@@ -1,0 +1,246 @@
+---
+title: "Contribution Guide"
+description: "Learn how to contribute to the CDA Valenciennes P2 documentation project following development best practices."
+---
+
+Thank you for your interest in contributing to the CDA Valenciennes P2 documentation! This guide explains how to participate in the project development while respecting professional standards.
+
+## Prerequisites
+
+Before starting, make sure you have:
+
+- **Node.js** (version 18 or higher)
+- **Git** installed and configured
+- A **GitHub** account
+- Basic knowledge of **React**, **Next.js** and **MDX**
+
+## Project Architecture
+
+This project uses a modern stack:
+
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Static typing
+- **Tailwind CSS** - Utility-first CSS framework
+- **MDX** - Enhanced Markdown with React components
+- **Internationalization** - French/English support
+
+## Contribution Workflow (Angular Style)
+
+We follow **Git Flow** and **Angular** conventions for effective collaboration.
+
+### 1. Fork and Clone
+
+```bash
+# Fork the repository on GitHub then clone your fork
+git clone https://github.com/YOUR_USERNAME/concepteur-developpeur.com.git
+cd concepteur-developpeur.com
+
+# Add the original repository as upstream remote
+git remote add upstream https://github.com/urahost/concepteur-developpeur.com.git
+```
+
+### 2. Branch Types
+
+Use the following prefixes for your branches:
+
+- `feature/` - New features
+- `fix/` - Bug fixes
+- `docs/` - Documentation changes
+- `style/` - CSS/UI improvements
+- `refactor/` - Code refactoring
+- `test/` - Adding tests
+
+**Examples:**
+```bash
+git checkout -b feature/add-javascript-section
+git checkout -b docs/improve-git-tutorial
+git checkout -b fix/navbar-responsive-issue
+```
+
+### 3. Commit Convention (Angular)
+
+Follow the Angular convention for your commit messages:
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+**Allowed types:**
+- `feat` - New feature
+- `fix` - Bug fix
+- `docs` - Documentation only
+- `style` - Formatting, spaces, missing commas, etc.
+- `refactor` - Refactoring without adding functionality
+- `test` - Adding tests
+- `chore` - Maintenance, dependencies, config
+
+**Examples:**
+```bash
+git commit -m "feat(content): add JavaScript fundamentals section"
+git commit -m "fix(navbar): resolve mobile menu overlay issue"
+git commit -m "docs(git): improve branch management explanation"
+git commit -m "style(components): update button hover animations"
+```
+
+### 4. Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open http://localhost:3000
+```
+
+### 5. Adding Content
+
+#### File Structure
+
+```
+contents/docs/
+├── fr/                    # French version
+│   ├── getting-started/
+│   ├── basics/
+│   ├── code-style/
+│   └── conception/
+└── en/                    # English version
+    ├── getting-started/
+    ├── basics/
+    ├── code-style/
+    └── conception/
+```
+
+#### MDX Format
+
+Each article must follow this structure:
+
+```markdown
+---
+title: "Article Title"
+description: "SEO description of the article"
+---
+
+# Main Title
+
+Article content with available MDX components:
+
+<Note>
+Important information
+</Note>
+
+<Note type="warning">
+Warning message
+</Note>
+
+\`\`\`javascript
+// Code with syntax highlighting
+const example = "Hello World";
+\`\`\`
+
+<Image src="/images/docs/example.png" alt="Description" />
+```
+
+### 6. Testing and Quality
+
+Before submitting your PR:
+
+```bash
+# Check the build
+npm run build
+
+# Check linting
+npm run lint
+
+# Check TypeScript types
+npm run type-check
+```
+
+### 7. Pull Request
+
+1. **Push your branch**:
+```bash
+git push origin feature/your-feature-name
+```
+
+2. **Create PR** on GitHub with:
+   - **Title**: Follow Angular convention
+   - **Description**: Explain the changes
+   - **Test plan**: How to test your modifications
+
+3. **PR Template**:
+```markdown
+## Summary
+- [x] Brief description of changes
+
+## Type of change
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Documentation update
+- [ ] Style/UI improvement
+
+## Test plan
+- [ ] Build passes
+- [ ] Linting passes
+- [ ] Manual testing completed
+
+## Screenshots (if applicable)
+[Add screenshots here]
+```
+
+## Specific Guidelines
+
+### Editorial Content
+
+- **French**: Use informal tone and pedagogical approach
+- **English**: Professional but accessible tone
+- **Examples**: Favor concrete and practical examples
+- **Images**: Optimized and with descriptive alt text
+
+### Code and Components
+
+- **TypeScript**: Always type your components
+- **Responsive**: Test on mobile and desktop
+- **Accessibility**: Follow WCAG standards
+- **Performance**: Optimize images and bundles
+
+### Documentation
+
+- **Internationalization**: Always create FR and EN versions
+- **SEO**: Frontmatter with title and description
+- **Navigation**: Update `lib/routes-config.ts`
+- **Assets**: Place images in `public/images/docs/`
+
+## Review Process
+
+1. **Automatic review**: GitHub Actions (build, lint, types)
+2. **Human review**: Project maintainer
+3. **Feedback**: Make requested corrections
+4. **Merge**: Squash and merge into `main`
+
+## Useful Resources
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [MDX Documentation](https://mdxjs.com/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Angular Commit Guidelines](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit)
+
+## Need Help?
+
+- 💬 **Discussions**: GitHub Discussions for general questions
+- 🐛 **Issues**: GitHub Issues for bugs and suggestions
+- 📧 **Contact**: Project maintainers
+
+<Note>
+Your contribution, whatever it is, is valuable! Don't hesitate to start small and learn progressively.
+</Note>
+
+---
+
+**Thank you for contributing to improving CDA Valenciennes P2 training!** 🚀

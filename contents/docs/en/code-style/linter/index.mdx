@@ -1,0 +1,227 @@
+---
+title: "Linter - Static Code Analysis"
+description: "Complete guide on linters, static analysis tools to maintain code quality and consistency in your development projects."
+---
+
+
+A linter is a static analysis tool that examines your source code to detect errors, style issues, suspicious constructs, and coding convention violations.
+
+## 🎯 What is a Linter?
+
+### Definition
+
+A **linter** is a program that analyzes source code to report:
+- Syntax errors
+- Style issues
+- Questionable constructs
+- Best practice violations
+- Potential bugs
+
+<Note>
+**Origin of the term**: The term "lint" comes from a Unix tool created in 1978 to analyze C code. Today, almost all languages have their linters.
+</Note>
+
+### Types of Analysis
+
+- **Syntactic analysis**: Correct syntax verification
+- **Semantic analysis**: Logical error detection
+- **Style analysis**: Formatting convention compliance
+- **Security analysis**: Potential vulnerability detection
+
+## 🚀 Benefits of Linters
+
+### For the Developer
+
+- **Early error detection**: Bugs found before execution
+- **Quality improvement**: More robust and reliable code
+- **Learning**: Discovery of best practices
+- **Time saving**: Less debugging
+
+### For the Team
+
+- **Consistency**: Uniform style throughout the project
+- **Collaboration**: Code easier to understand
+- **Standards**: Adherence to established conventions
+- **Code review**: Focus on logic rather than style
+
+## 🛠️ ESLint for JavaScript/TypeScript
+
+### Installation
+
+```bash
+# Local installation in project
+npm install --save-dev eslint
+
+# Global installation
+npm install -g eslint
+
+# For TypeScript
+npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
+
+### Basic Configuration
+
+```json
+// .eslintrc.json
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
+  }
+}
+```
+
+### React Configuration
+
+```json
+// .eslintrc.json for React
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "error",
+    "no-console": "warn"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
+```
+
+## 📋 Important Rules
+
+### Basic Rules
+
+```javascript
+// ❌ ESLint will flag these issues
+
+// no-unused-vars
+const unusedVariable = 'never used';
+
+// no-undef
+console.log(undefinedVariable);
+
+// eqeqeq - Prefer === over ==
+if (value == '5') { }
+
+// no-var - Prefer let/const
+var oldStyle = 'avoid var';
+
+// prefer-const - Use const when possible
+let constantValue = 'never changes';
+```
+
+```javascript
+// ✅ Corrected code
+
+// Used variables
+const message = 'Hello World';
+console.log(message);
+
+// Defined or imported variables
+import { someFunction } from './utils';
+console.log(someFunction());
+
+// Strict comparison
+if (value === '5') { }
+
+// let/const instead of var
+const modernStyle = 'use const/let';
+
+// const for non-reassigned values
+const constantValue = 'never changes';
+```
+
+## 🎨 Editor Integration
+
+### Visual Studio Code
+
+```json
+// .vscode/settings.json
+{
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+```
+
+### Recommended VSCode Extensions
+
+- **ESLint**: Native ESLint integration
+- **Prettier - Code formatter**: Automatic formatting
+- **Error Lens**: Inline error display
+
+## 🔧 NPM Scripts
+
+```json
+// package.json
+{
+  "scripts": {
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "lint:watch": "eslint src --ext .js,.jsx,.ts,.tsx --watch",
+    "lint:staged": "lint-staged"
+  }
+}
+```
+
+<Note type="warning">
+**Important**: A linter should help, not frustrate. Configure it progressively and adapt it to your team's needs.
+</Note>
+
+## 🎓 Conclusion
+
+Linters are essential tools for:
+- Maintaining code quality
+- Harmonizing team practices
+- Detecting errors early
+- Improving readability
+
+The initial configuration investment quickly pays off through reduced bugs and improved team productivity.
+
+---
+
+A properly configured linter is like a personal mentor guiding towards best practices!

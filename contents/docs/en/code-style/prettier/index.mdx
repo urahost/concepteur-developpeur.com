@@ -1,0 +1,266 @@
+---
+title: "Prettier - Automatic Code Formatting"
+description: "Complete guide on Prettier, the automatic code formatting tool that ensures consistent code style and better readability in your projects."
+---
+
+
+Prettier is an opinionated code formatter that parses your code and reprints it with its own rules, ensuring perfect consistency throughout your project.
+
+## 🎯 What is Prettier?
+
+### Definition
+
+**Prettier** is a code formatting tool that:
+- Analyzes your code structure
+- Applies consistent formatting rules
+- Reprints code with uniform style
+- Eliminates style debates within teams
+
+<Note>
+**Philosophy**: "You press save and code is formatted. No need to discuss style in code review. Saves you time and energy."
+</Note>
+
+### Supported Languages
+
+- JavaScript, TypeScript, JSX, TSX
+- CSS, SCSS, Less
+- HTML, Vue
+- JSON, YAML
+- Markdown
+- GraphQL
+
+## 🚀 Installation and Configuration
+
+### Installation
+
+```bash
+# Local installation (recommended)
+npm install --save-dev prettier
+
+# Global installation
+npm install -g prettier
+
+# With Yarn
+yarn add --dev prettier
+```
+
+### Basic Configuration
+
+```json
+// .prettierrc
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSpacing": true,
+  "arrowParens": "always"
+}
+```
+
+## ⚙️ Configuration Options
+
+### Main Options
+
+```json
+{
+  "printWidth": 80,           // Maximum line length
+  "tabWidth": 2,              // Number of spaces per indentation level
+  "useTabs": false,           // Use tabs instead of spaces
+  "semi": true,               // Add semicolons
+  "singleQuote": true,        // Use single quotes
+  "quoteProps": "as-needed",  // Quotes on object properties
+  "trailingComma": "es5",     // Trailing commas
+  "bracketSpacing": true,     // Spaces in object brackets
+  "arrowParens": "always"     // Parentheses around arrow function parameters
+}
+```
+
+### Formatting Examples
+
+#### JavaScript/TypeScript
+
+```javascript
+// Before Prettier
+const user={name:"John",age:30,city:"Paris"};
+const greet=(name,age)=>`Hello ${name}, you are ${age} years old`;
+
+// After Prettier
+const user = { name: 'John', age: 30, city: 'Paris' };
+const greet = (name, age) => `Hello ${name}, you are ${age} years old`;
+```
+
+#### CSS
+
+```css
+/* Before Prettier */
+.button{background-color:#007bff;color:white;padding:10px 20px;border:none;}
+
+/* After Prettier */
+.button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+}
+```
+
+## 🎨 Editor Integration
+
+### Visual Studio Code
+
+```json
+// .vscode/settings.json
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "prettier.requireConfig": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
+
+## 🔧 NPM Scripts
+
+```json
+// package.json
+{
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:staged": "pretty-quick --staged",
+    "format:js": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "format:css": "prettier --write '**/*.{css,scss,less}'",
+    "format:json": "prettier --write '**/*.json'"
+  }
+}
+```
+
+### Usage
+
+```bash
+# Format entire project
+npm run format
+
+# Check formatting without modifying
+npm run format:check
+
+# Format only staged files (Git)
+npm run format:staged
+
+# Format specific files
+npx prettier --write src/components/Button.js
+npx prettier --write "src/**/*.{js,jsx,ts,tsx}"
+```
+
+## 🚫 .prettierignore File
+
+```gitignore
+# .prettierignore
+node_modules
+build
+dist
+coverage
+*.min.js
+*.min.css
+public/
+.next/
+.nuxt/
+.vuepress/dist
+.cache
+package-lock.json
+yarn.lock
+```
+
+## 🤝 ESLint Integration
+
+### Installation
+
+```bash
+npm install --save-dev eslint-config-prettier eslint-plugin-prettier
+```
+
+### ESLint Configuration
+
+```json
+// .eslintrc.json
+{
+  "extends": [
+    "eslint:recommended",
+    "prettier" // Must be last
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
+```
+
+## 🎯 Recommended Configurations
+
+### For React/TypeScript
+
+```json
+// .prettierrc
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "endOfLine": "lf"
+}
+```
+
+### For Vue.js
+
+```json
+// .prettierrc
+{
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "vueIndentScriptAndStyle": true
+}
+```
+
+<Note type="success">
+**Main advantage**: Prettier completely eliminates code style discussions during reviews, allowing focus on logic and architecture.
+</Note>
+
+## 🎓 Best Practices
+
+### Team Configuration
+
+1. **Decide together**: The entire team must approve the configuration
+2. **Start simple**: Use default configuration initially
+3. **Document**: Explain configuration choices in README
+4. **Be consistent**: Apply to all team projects
+
+### Golden Rules
+
+- **Don't debate style**: Let Prettier decide
+- **Format automatically**: Use Git hooks and IDE
+- **Be pragmatic**: Sometimes disable for generated code
+- **Update regularly**: Follow new versions
+
+---
+
+Prettier transforms code formatting from a chore into an automatic process, allowing developers to focus on what really matters: logic and creativity!

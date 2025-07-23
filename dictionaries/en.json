@@ -47,6 +47,7 @@
         "back_to_homepage": "Back to homepage"
     },
     "leftbar": {
+        "getting_started": "Getting Started",
         "basics": "Basics",
         "git": "Git",
         "introduction": "Introduction",
@@ -69,14 +70,19 @@
         "clean_code_references": "Clean Code References",
         "conception": "Conception",
         "get_started": "Get Started",
-        "pre_design": "Pre-Design"
+        "pre_design": "Pre-Design",
+        "contributing": "Contributing",
+        "credits": "Credits"
     },
     "blog": {
         "title": "The latest blogs of this product",
         "sub_title": "All the latest blogs and news, straight from the team.",
         "published_on": "Published on",
         "back_to_blog": "Back to blog",
-        "posted_by": "Posted by"
+        "posted_by": "Posted by",
+        "og_description": "Articles and news from CDA training",
+        "og_discover": "Discover the latest articles and tutorials",
+        "og_article": "Blog Article"
     },
     "error": {
         "oops": "Oops!",
@@ -84,5 +90,11 @@
         "sub_text": "We're sorry, but an error occurred while processing your request.",
         "reload_page": "Reload Page",
         "back_to_homepage": "Back to homepage"
+    },
+    "opengraph": {
+        "formation_cda": "CDA Training",
+        "documentation_formation": "CDA Training Documentation",
+        "training_documentation": "Training Documentation",
+        "topics": "Git • Agile Methodology • Clean Code • Design"
     }
 }

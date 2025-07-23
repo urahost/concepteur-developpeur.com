@@ -19,11 +19,7 @@ const available_locales = [
   {
     title: "Français",
     code: "fr",
-  },
-  {
-    title: "日本語",
-    code: "ja",
-  },
+  }
 ];
 
 export default function LangSelect() {

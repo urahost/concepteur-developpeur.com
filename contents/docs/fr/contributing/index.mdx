@@ -1,0 +1,246 @@
+---
+title: "Guide de contribution"
+description: "Apprenez comment contribuer au projet de documentation CDA Valenciennes P2 en suivant les bonnes pratiques de développement."
+---
+
+Merci de votre intérêt pour contribuer à la documentation CDA Valenciennes P2 ! Ce guide vous explique comment participer au développement du projet en respectant les standards professionnels.
+
+## Prérequis
+
+Avant de commencer, assurez-vous d'avoir :
+
+- **Node.js** (version 18 ou supérieure)
+- **Git** installé et configuré
+- Un compte **GitHub**
+- Une connaissance de base de **React**, **Next.js** et **MDX**
+
+## Architecture du projet
+
+Ce projet utilise une stack moderne :
+
+- **Next.js 15** - Framework React avec App Router
+- **TypeScript** - Typage statique
+- **Tailwind CSS** - Framework CSS utility-first
+- **MDX** - Markdown enrichi avec composants React
+- **Internationalisation** - Support français/anglais
+
+## Workflow de contribution (Angular Style)
+
+Nous suivons le **Git Flow** et les conventions **Angular** pour une collaboration efficace.
+
+### 1. Fork et clone
+
+```bash
+# Fork le repository sur GitHub puis clonez votre fork
+git clone https://github.com/VOTRE_USERNAME/concepteur-developpeur.com.git
+cd concepteur-developpeur.com
+
+# Ajoutez le repository original comme remote
+git remote add upstream https://github.com/urahost/concepteur-developpeur.com.git
+```
+
+### 2. Types de branches
+
+Utilisez les préfixes suivants pour vos branches :
+
+- `feature/` - Nouvelles fonctionnalités
+- `fix/` - Corrections de bugs
+- `docs/` - Modifications de documentation
+- `style/` - Améliorations CSS/UI
+- `refactor/` - Refactoring de code
+- `test/` - Ajout de tests
+
+**Exemple :**
+```bash
+git checkout -b feature/add-javascript-section
+git checkout -b docs/improve-git-tutorial
+git checkout -b fix/navbar-responsive-issue
+```
+
+### 3. Convention de commits (Angular)
+
+Respectez la convention Angular pour vos messages de commit :
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+**Types autorisés :**
+- `feat` - Nouvelle fonctionnalité
+- `fix` - Correction de bug
+- `docs` - Documentation uniquement
+- `style` - Formatage, espaces, virgules manquantes, etc.
+- `refactor` - Refactoring sans ajout de fonctionnalité
+- `test` - Ajout de tests
+- `chore` - Maintenance, dépendances, config
+
+**Exemples :**
+```bash
+git commit -m "feat(content): add JavaScript fundamentals section"
+git commit -m "fix(navbar): resolve mobile menu overlay issue"
+git commit -m "docs(git): improve branch management explanation"
+git commit -m "style(components): update button hover animations"
+```
+
+### 4. Développement local
+
+```bash
+# Installez les dépendances
+npm install
+
+# Lancez le serveur de développement
+npm run dev
+
+# Ouvrez http://localhost:3000
+```
+
+### 5. Ajout de contenu
+
+#### Structure des fichiers
+
+```
+contents/docs/
+├── fr/                    # Version française
+│   ├── getting-started/
+│   ├── basics/
+│   ├── code-style/
+│   └── conception/
+└── en/                    # Version anglaise
+    ├── getting-started/
+    ├── basics/
+    ├── code-style/
+    └── conception/
+```
+
+#### Format MDX
+
+Chaque article doit respecter cette structure :
+
+```markdown
+---
+title: "Titre de l'article"
+description: "Description SEO de l'article"
+---
+
+# Titre principal
+
+Contenu de l'article avec composants MDX disponibles :
+
+<Note>
+Information importante
+</Note>
+
+<Note type="warning">
+Avertissement
+</Note>
+
+\`\`\`javascript
+// Code avec coloration syntaxique
+const example = "Hello World";
+\`\`\`
+
+<Image src="/images/docs/example.png" alt="Description" />
+```
+
+### 6. Tests et qualité
+
+Avant de soumettre votre PR :
+
+```bash
+# Vérifiez le build
+npm run build
+
+# Vérifiez le linting
+npm run lint
+
+# Vérifiez les types TypeScript
+npm run type-check
+```
+
+### 7. Pull Request
+
+1. **Poussez votre branche** :
+```bash
+git push origin feature/your-feature-name
+```
+
+2. **Créez la PR** sur GitHub avec :
+   - **Titre** : Respectez la convention Angular
+   - **Description** : Expliquez les changements
+   - **Test plan** : Comment tester vos modifications
+
+3. **Template de PR** :
+```markdown
+## Summary
+- [x] Brief description of changes
+
+## Type of change
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Documentation update
+- [ ] Style/UI improvement
+
+## Test plan
+- [ ] Build passes
+- [ ] Linting passes
+- [ ] Manual testing completed
+
+## Screenshots (if applicable)
+[Add screenshots here]
+```
+
+## Guidelines spécifiques
+
+### Contenu éditorial
+
+- **Français** : Utilisez le tutoiement et un ton pédagogique
+- **Anglais** : Ton professionnel mais accessible
+- **Exemples** : Privilégiez des exemples concrets et pratiques
+- **Images** : Optimisées et avec alt text descriptif
+
+### Code et composants
+
+- **TypeScript** : Typez toujours vos composants
+- **Responsive** : Testez sur mobile et desktop
+- **Accessibilité** : Respectez les standards WCAG
+- **Performance** : Optimisez images et bundles
+
+### Documentation
+
+- **Internationalisation** : Créez toujours les versions FR et EN
+- **SEO** : Frontmatter avec title et description
+- **Navigation** : Mettez à jour `lib/routes-config.ts`
+- **Assets** : Placez les images dans `public/images/docs/`
+
+## Processus de review
+
+1. **Review automatique** : Actions GitHub (build, lint, types)
+2. **Review humaine** : Mainteneur du projet
+3. **Feedback** : Apportez les corrections demandées
+4. **Merge** : Squash and merge dans `main`
+
+## Ressources utiles
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [MDX Documentation](https://mdxjs.com/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Angular Commit Guidelines](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit)
+
+## Besoin d'aide ?
+
+- 💬 **Discussions** : GitHub Discussions pour questions générales
+- 🐛 **Issues** : GitHub Issues pour bugs et suggestions
+- 📧 **Contact** : Mainteneurs du projet
+
+<Note>
+Votre contribution, quelle qu'elle soit, est précieuse ! N'hésitez pas à commencer petit et à apprendre progressivement.
+</Note>
+
+---
+
+**Merci de contribuer à l'amélioration de la formation CDA Valenciennes P2 !** 🚀
