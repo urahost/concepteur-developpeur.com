@@ -1,0 +1,200 @@
+---
+title: "Git Basic Commands"
+description: "Master the fundamental Git commands every developer needs to know: init, add, commit, and restore. Learn how to interact with Git through the command line effectively."
+---
+
+# Git Basic Commands
+
+Git commands are how you interact with Git. They allow you to tell Git to perform specific actions. These commands are entered in your terminal (shell). This article covers the most basic commands that every developer should master.
+
+<Note type="info">
+If you haven't read the article on [how Git works](/docs/basics/git/git-functions), please do so before reading this one, as it provides essential background knowledge.
+</Note>
+
+## Initializing Git in a Project
+
+To initialize Git in a project, use the following command:
+
+```bash
+git init
+```
+
+This command will create a `.git` directory in the directory where you run it. For example, if you are in `/my_git_project/`, a `.git` directory will be created in that folder, and you can access it by going to `/my_git_project/.git`.
+
+<Note type="warning">
+You might not see the `.git` directory in a regular `ls` listing because the `.` before `git` makes it a hidden directory. You can use the `ls -al` command to see hidden directories.
+</Note>
+
+Now, Git is initialized in your project and ready to track your files!
+
+## Stage Changes for Commit
+
+To stage files that have been modified, use the following command:
+
+```bash
+git add [file_name]
+```
+
+This command will place your file in the staging area, preparing it for the next commit.
+
+### Staging Individual Files
+
+For example:
+
+```bash
+git add index.js
+```
+
+This will stage `index.js`, and you'll be able to include this file in your next commit.
+
+### Staging Directories
+
+You can also stage an entire directory:
+
+```bash
+git add my_directory/
+```
+
+This command stages all files that have been modified in the specified directory.
+
+### Staging All Changes
+
+If you want to add all your modified files to a commit, you can use:
+
+```bash
+git add .
+```
+
+<Note type="warning">
+**Use with caution!** This command stages all modified files from the directory where you run it. For example, if you run this command in `/my_git_project/articles/`, it stages all files in `/my_git_project/articles/` and its subdirectories recursively.
+
+It's best to avoid this approach unless you are only modifying one file at a time and committing changes in real-time.
+</Note>
+
+## Unstage a File
+
+It's possible to make a mistake when staging files. For example, you might realize that you included a file that shouldn't be part of the commit you intended to make. In such cases, you can use the command:
+
+```bash
+git restore --staged [file_name_to_unstage]
+```
+
+### Unstaging Multiple Files
+
+You can also unstage entire directories:
+
+```bash
+git restore --staged my_directory/
+```
+
+Or unstage all files:
+
+```bash
+git restore --staged .
+```
+
+<Note type="danger">
+**Important Warning:** Use this command with caution. Without the `--staged` option, this command will reset the specified file or directory to its last known state (the state in your local repository), **discarding all your current changes**.
+
+```bash
+# This is DANGEROUS - it will discard your changes!
+git restore index.js
+```
+</Note>
+
+## Commit Changes
+
+If you have files in your stage area, you probably want to make a commit. To do this, enter the following command:
+
+```bash
+git commit
+```
+
+This will open a text editor like Vi or Nano, depending on which one you have configured. This method can be a bit lengthy, which is why there is an option that streamlines the process:
+
+```bash
+git commit -m "commit message"
+```
+
+By adding the `-m` option, you can specify the commit message directly without opening an editor.
+
+### Example Commit
+
+```bash
+git commit -m "Implementation of my super useful function"
+```
+
+<Note type="success">
+Your commit is now complete! The version of the file that was in the stage area has been copied to your local repository. The files that were previously in the stage area are no longer there since they have been committed.
+</Note>
+
+## Command Workflow Example
+
+Here's a typical workflow combining these commands:
+
+<Tabs>
+<TabsContent value="workflow" label="Complete Workflow">
+
+```bash
+# 1. Initialize Git in your project
+git init
+
+# 2. Make some changes to your files
+# ... edit index.js ...
+
+# 3. Stage the changes
+git add index.js
+
+# 4. Commit the changes
+git commit -m "Add new feature to index.js"
+
+# 5. If you made a mistake, you can unstage files
+git restore --staged index.js
+
+# 6. Stage and commit again
+git add index.js
+git commit -m "Corrected implementation of new feature"
+```
+
+</TabsContent>
+<TabsContent value="shortcuts" label="Useful Shortcuts">
+
+```bash
+# Stage all modified files (use carefully)
+git add .
+
+# Unstage all files
+git restore --staged .
+
+# Commit with inline message
+git commit -m "Your descriptive commit message"
+
+# View current status
+git status
+
+# View commit history
+git log --oneline
+```
+
+</TabsContent>
+</Tabs>
+
+## Conclusion
+
+You should now be able to use Git at a basic level. These fundamental commands form the foundation of Git usage and are essential for any developer working with version control. The upcoming articles will focus on more advanced and concrete concepts like branching and collaborative workflows.
+
+## Summary
+
+- **Commands** are the way to interact with Git to perform actions
+- **`git init`** initializes Git in a directory, creating the `.git` folder
+- **`git add [file/directory]`** stages files for the next commit
+  - Use specific file names for precise control
+  - Use `.` to stage all changes (with caution)
+- **`git restore --staged [file/directory]`** unstages files from the staging area
+  - **Warning:** Without `--staged`, this command discards changes permanently
+- **`git commit`** validates and saves staged changes to the repository
+  - Use `-m "message"` to specify the commit message directly
+
+<Note>
+In the next article, we'll explore [Git branches](/docs/basics/git/branches) to learn how to work on multiple features simultaneously without conflicts.
+</Note>

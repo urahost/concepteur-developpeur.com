@@ -1,0 +1,262 @@
+---
+title: "Méthodologie Agile & SCRUM"
+description: "Maîtrisez la méthodologie Agile et le framework SCRUM pour la gestion de projet. Apprenez les 4 valeurs, les principes fondamentaux, les rôles, les cérémonies et les outils comme Jira pour une collaboration d'équipe efficace."
+---
+
+# Méthodologie Agile & SCRUM
+
+La gestion d'un projet en suivant le manifeste Agile place le **client** au centre du cycle de vie de ce dernier. En incluant le client au processus de mise en place du projet, l'équipe Agile peut ajuster le développement du projet en fonction de l'évolution du besoin du client dans le temps.
+
+## Les 4 valeurs de la méthode Agile
+
+La méthodologie Agile repose sur quatre valeurs fondamentales qui privilégient l'adaptabilité et la collaboration humaine :
+
+<Stepper>
+  <StepperItem title="L'équipe">
+    Les **individus** et les **interactions**, plus que des **processus** et des **outils**
+  </StepperItem>
+  <StepperItem title="Applicatif">
+    Des **fonctionnalités opérationnelles** plus qu'une **documentation exhaustive**
+  </StepperItem>
+  <StepperItem title="La collaboration">
+    Une **collaboration** avec les **clients** plus qu'une **négociation contractuelle**
+  </StepperItem>
+  <StepperItem title="L'adaptation">
+    Une **capacité d'adaptation** au changement plus que le **suivi d'un plan rigide**
+  </StepperItem>
+</Stepper>
+
+## Les principes fondamentaux de la méthode Agile
+
+### Productivité
+
+<Note type="success">
+**Principes clés de productivité :**
+- Fournir régulièrement des solutions fonctionnelles
+- **Prioriser les tâches importantes**
+- Segmenter la production du projet
+- Une ligne de conduite rigoureuse lors du développement du projet
+- La simplicité et l'art de maximiser la quantité de travail **qu'on ne fait pas**
+</Note>
+
+### Communication client
+
+<Note type="info">
+**Approche centrée sur le client :**
+- **Le client fait partie de l'équipe**
+- Communication **permanente** avec le client
+- Établir une **relation de confiance** avec le client
+</Note>
+
+### Communication
+
+- Adaptation et amélioration de l'équipe
+- Privilégier le contact humain
+- **Le contact humain facilite la compréhension des différentes contraintes de chaque partie prenante**
+- Communication verbale et non verbale (communication face à face)
+- Auto-responsabiliser les membres de l'équipe
+
+## Framework SCRUM
+
+SCRUM est un **framework** (cadre de travail) permettant de mettre en place la méthodologie Agile de façon **incrémentale** et **itérative**.
+
+![Schéma SCRUM](/images/docs/assets/agile-method/scrum_schema.jpeg)
+
+### Les rôles
+
+<Tabs>
+<TabsList>
+<TabsTrigger value="po">Product Owner</TabsTrigger>
+<TabsTrigger value="sm">Scrum Master</TabsTrigger>
+<TabsTrigger value="dev">Équipe de développement</TabsTrigger>
+</TabsList>
+
+<TabsContent value="po">
+### Product Owner
+
+Le **Product Owner** (PO) est un membre névralgique sur lequel repose une charge de travail très importante. Il se charge de la **communication** entre le **client** et l'**équipe**, il **organise** le **Product Backlog** en fonction des **tâches à prioriser** et régit globalement le cycle de vie du projet.
+
+**Principales responsabilités :**
+- Gérer le Product Backlog
+- Définir les user stories et les exigences
+- Prioriser les fonctionnalités selon la valeur métier
+- Faire office de voix du client
+</TabsContent>
+
+<TabsContent value="sm">
+### Scrum Master
+
+Le **SCRUM Master** a pour rôle de s'assurer que le **framework SCRUM** est bien **mis en application**, il est aussi responsable de l'**animation des rituels Agile**.
+
+**Principales responsabilités :**
+- Faciliter les cérémonies SCRUM
+- Supprimer les obstacles pour l'équipe
+- Former l'équipe aux pratiques Agile
+- Protéger l'équipe des distractions externes
+</TabsContent>
+
+<TabsContent value="dev">
+### Équipe de développement
+
+L'équipe de développement est composée de **développeurs** qui auront à leur charge de **développer les fonctionnalités du projet**.
+
+**Caractéristiques clés :**
+- Auto-organisée et pluridisciplinaire
+- Généralement 3 à 9 membres
+- Collectivement responsable de livrer l'incrément produit
+- Prend les décisions techniques
+</TabsContent>
+</Tabs>
+
+## Les Backlogs
+
+### Le Product Backlog
+
+Le **Product Backlog** est un **registre** dans lequel l'équipe pioche des **tâches à réaliser**. Le Product Backlog est rempli par le **Product Owner** et peut contenir :
+
+<Note type="info">
+**User Stories** : Les user stories sont des **tâches simples** expliquant une fonctionnalité du produit. Les user stories peuvent se décomposer en **sous-tâches** qui serviront d'**étapes à l'accomplissement** de la user story liée.
+
+**Format** : "**En tant que..., je peux..., afin de...**" ou "**En tant que..., je dois..., afin de...**"
+
+**Exemple** : "En tant qu'apprenant je dois m'identifier afin de participer à ma promotion."
+
+Les user stories répondent à **`Qui ? Quoi ? Pourquoi ?`**, et il ne reste plus qu'au **développeur** de répondre au **`Comment ?`**.
+</Note>
+
+<Note type="success">
+**Epics** : Les Epics sont un **ensemble d'user stories**. En général, les Epics représentent une fonctionnalité complète là où les **user stories** représentent des **fragments de fonctionnalités**.
+
+**Exemple** : Une Epic pourrait être `Identification des utilisateurs` et pourrait contenir plusieurs user stories liées à la connexion, l'inscription, la réinitialisation de mot de passe, etc.
+</Note>
+
+![Product Backlog](/images/docs/assets/agile-method/backlog.png)
+
+### Le Sprint Backlog
+
+Le **Sprint Backlog** est un **registre** contenant des **tâches à effectuer** pour livrer une fonctionnalité. Une fois qu'un sprint est terminé, l'équipe se réunit pour les **rituels agiles rétrospectifs** afin d'identifier différents **axes d'amélioration** et définir les nouvelles tâches pour le prochain sprint.
+
+![Cycle SCRUM](/images/docs/assets/agile-method/cycle.jpeg)
+
+## Les rituels / cérémonies SCRUM
+
+### Le Sprint Planning
+
+Le **Sprint Planning** est un **rituel SCRUM** qui réunit le **Product Owner** et l'**équipe de développement** afin de **planifier le Sprint à venir**. Ensemble, ils établissent une liste de tâches à mettre dans le **Sprint Backlog** en se basant sur la **priorité des tâches** ou en fonction de la **dernière itération**.
+
+<Note type="success">
+À la fin du Sprint Planning, l'équipe de développement sait quelles tâches devront être réalisées lors du prochain sprint et a une compréhension claire de l'objectif du sprint.
+</Note>
+
+### Le Daily Meeting (Stand-up)
+
+Le **Daily Meeting** est un rituel dont la charge revient à l'équipe de développement et, comme son nom l'indique, il **a lieu tous les jours**, en général avant de commencer à travailler sur le projet (vous pourrez aussi entendre parler de **Stand Up Meeting**). Ce rituel ne doit pas dépasser **15 minutes** dans un souci d'efficacité.
+
+Lors de ce rituel, les membres de l'équipe doivent répondre aux questions :
+
+<Stepper>
+  <StepperItem title="Hier">
+    **Qu'est-ce que j'ai fait hier ?**
+  </StepperItem>
+  <StepperItem title="Obstacles">  
+    **Quels obstacles ai-je rencontrés ?**
+  </StepperItem>
+  <StepperItem title="Aujourd'hui">
+    **Qu'est-ce que je vais faire aujourd'hui ?**
+  </StepperItem>
+</Stepper>
+
+<Note type="warning">
+Si une problématique notable est relevée, elle doit faire l'objet d'une **réunion ultérieure afin d'être résolue** - ne laissez pas le daily meeting s'éterniser.
+</Note>
+
+### La Sprint Review
+
+La **Sprint Review** est le seul rituel qui **inclut les parties prenantes du projet**. Ce rituel réunit :
+
+- Le client
+- Le SCRUM Master
+- Le Product Owner
+- L'équipe de développement
+
+<Note type="info">
+Il faut compter **1 heure par tranche d'1 semaine de sprint**, c'est-à-dire que si un sprint a une durée de 2 semaines, la review durera 2 heures.
+</Note>
+
+Ce rituel sert à l'**équipe** de présenter l'**état d'avancement du projet** à toutes les parties prenantes. De cette façon, le **client peut faire part de ses impressions** quant au projet, ou dire que le projet nécessite quelques ajustements.
+
+<Note type="warning">
+Il peut arriver qu'à l'issue d'un sprint, le **Product Owner annule ce rituel** pour certaines raisons, notamment lorsque le sprint a rencontré des difficultés à être achevé et n'est donc **pas présentable**.
+</Note>
+
+### La Sprint Retrospective
+
+La **Sprint Retrospective** est un rituel qui sert à l'**équipe de développement** d'identifier ce qui s'est passé durant le **dernier sprint**. Ce rituel réunit :
+
+- Le SCRUM Master
+- L'équipe de développement
+
+<Note type="success">
+L'idée de ce rituel n'est pas de mettre en évidence ce qui n'a pas fonctionné mais de **mettre en lumière ce qui s'est bien passé** et vers quels axes d'**amélioration le SCRUM Master peut emmener l'équipe** afin de corriger ce qui s'est mal passé.
+</Note>
+
+Ce rituel peut durer jusqu'à **4 heures** en raison de sa nature et de son importance pour l'amélioration continue.
+
+## Outils Organisationnels
+
+### Jira
+
+![Illustration Jira](/images/docs/assets/agile-method/jira/illu.jpg)
+
+Jira est un service collaboratif permettant d'appliquer la méthodologie Agile de par son design. Il peut être utilisé avec le Framework SCRUM et avec KANBAN. Si vous devez travailler en méthodologie Agile en utilisant le framework SCRUM, Jira est de très loin le meilleur candidat et il est pour ainsi dire obligatoire dans toute entreprise du domaine qui se respecte.
+
+#### Découverte de Jira
+
+Jira est un service en ligne. Avec Jira, vous disposez de tout un tas d'outils simples d'utilisation et accessibles via une interface épurée et ergonomique.
+
+<Note type="info">
+Bien qu'il puisse paraître complexe d'utilisation de prime abord, il s'agit d'un outil très complet qui vous fera gagner beaucoup de temps dans la gestion de projet.
+</Note>
+
+Voyons l'interface de base de Jira :
+
+![Interface de base](/images/docs/assets/agile-method/jira/basic-interface.png)
+
+Voici donc l'interface à laquelle les développeurs sont le plus souvent confrontés. Notez d'ailleurs que cette interface est celle d'un projet SCRUM ; cette dernière est différente pour un projet Kanban.
+
+#### Interface de Sprint Planning
+
+Voici l'interface utilisée lors du **Sprint Planning** :
+
+![Interface Product Backlog](/images/docs/assets/agile-method/jira/product-backlog.png)
+
+Cette interface est celle du **Product Backlog** et sert donc à transférer les tâches dans le **Sprint Backlog**. De cette façon, l'équipe prend les tâches prioritaires et les glisse dans l'espace du Sprint. Une fois que le Sprint démarre, les tâches sont directement transférées au **Board**.
+
+#### Sprint Board
+
+Voici un aperçu de ce à quoi ressemble le **Board** lorsqu'un **Sprint** débute :
+
+![Sprint Board](/images/docs/assets/agile-method/jira/sprint-board.png)
+
+Cela ressemble à un Kanban avec des colonnes typiques comme :
+- **À faire** - Tâches pas encore commencées
+- **En cours** - Tâches actuellement en développement
+- **Terminé** - Tâches complétées
+
+<Note type="warning">
+À la fin du sprint (la date de fin est définissable lors de la création du sprint), les tâches n'ayant pas été achevées retournent au **Product Backlog**.
+</Note>
+
+## Résumé
+
+- La **méthodologie Agile** place le client au centre et valorise l'adaptabilité plutôt que les processus rigides
+- **SCRUM** est un framework qui implémente les principes Agile à travers des rôles et des cérémonies définis
+- Le **Product Owner** gère le backlog et représente les besoins du client
+- Le **Scrum Master** facilite le processus et supprime les obstacles
+- L'**équipe de développement** construit les fonctionnalités du produit
+- Les **cérémonies** (Sprint Planning, Daily Standup, Sprint Review, Retrospective) assurent une communication et une amélioration continues
+- **Jira** est l'outil standard de l'industrie pour gérer les projets Agile/SCRUM
+
+<Note>
+Cette introduction couvre les aspects fondamentaux d'Agile et SCRUM. Ces deux méthodologies sont extrêmement complètes et ne s'arrêtent pas simplement à ce qui a été présenté ici, mais ces bases vous donneront une fondation solide pour une gestion de projet efficace.
+</Note>

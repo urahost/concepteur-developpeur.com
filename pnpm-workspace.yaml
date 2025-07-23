@@ -1,0 +1,3 @@
+onlyBuiltDependencies:
+  - rehype-code-titles
+  - sharp

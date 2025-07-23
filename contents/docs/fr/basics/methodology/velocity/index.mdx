@@ -1,0 +1,226 @@
+---
+title: "Vélocité en SCRUM"
+description: "Comprenez la vélocité dans le développement Agile - une métrique cruciale pour mesurer la performance d'équipe, la planification de sprint et les prévisions de projet. Apprenez à calculer, utiliser et interpréter les graphiques de vélocité efficacement."
+---
+
+# Vélocité en SCRUM
+
+**La vélocité** est un indicateur utilisé sur des projets gérés à l'aide d'une méthode agile, par exemple avec le framework **SCRUM**. La vélocité agile permet de déterminer l'effort qu'est capable de fournir une équipe de développement pour la réalisation des tâches programmées dans un sprint. Elle est exprimée en nombre de points.
+
+## Comprendre la vélocité
+
+Le **Product Owner** place dans le **Product Backlog** un certain nombre de fonctionnalités à réaliser ou items généralement formalisés sous la forme d'*user stories*. L'équipe de développement attribue à chaque **Product Backlog Item (PBI)** un certain nombre de points. Ces points représentent à la fois la complexité et la durée de la réalisation du PBI estimée de façon empirique.
+
+<Note type="info">
+Il ne s'agit pas d'une échelle linéaire ; la **suite de Fibonacci** est souvent utilisée pour l'estimation des story points.
+</Note>
+
+### Valeurs des Story Points
+
+Les valeurs pouvant être attribuées sont :
+
+<Tabs>
+<TabsList>
+<TabsTrigger value="simple">Tâches simples</TabsTrigger>
+<TabsTrigger value="moderate">Tâches modérées</TabsTrigger>
+<TabsTrigger value="complex">Tâches complexes</TabsTrigger>
+</TabsList>
+
+<TabsContent value="simple">
+**Valeur : 1**
+
+Pour des tâches extrêmement simples, comme :
+- Correction d'un libellé
+- Modifications de texte mineures
+- Mises à jour de configuration simples
+</TabsContent>
+
+<TabsContent value="moderate">
+**Valeurs : 2, 3, 5**
+
+Pour des tâches de complexité modérée, comme :
+- Création d'un formulaire de saisie simple
+- Opérations CRUD de base
+- Intégrations API simples
+</TabsContent>
+
+<TabsContent value="complex">
+**Valeurs : 8, 13, 21, 34, 55, 89, 144**
+
+Pour des tâches complexes ou lorsque l'on ne dispose pas de suffisamment d'informations pour estimer correctement :
+- Implémentation de logique métier complexe
+- Changements architecturaux majeurs
+- Intégration avec des systèmes externes
+</TabsContent>
+</Tabs>
+
+![Concept de vélocité](/images/docs/assets/velocity/what-is-velocity.png)
+
+## Qui se charge de l'estimation des PBI ?
+
+<Stepper>
+  <StepperItem title="Rôle du Product Owner">
+    Le **Product Owner** a pour mission de donner à chaque *Product Backlog* les fonctionnalités ou items à réaliser durant le sprint.
+  </StepperItem>
+  <StepperItem title="Évaluation de la capacité de l'équipe">
+    Lors de la session de planification, l'équipe doit prendre en compte sa capacité qui permettra de déterminer la vélocité moyenne.
+  </StepperItem>
+  <StepperItem title="Estimation par l'équipe de développement">
+    Seule l'équipe de développement est en mesure de se charger de l'estimation des **PBI**. Elle se chargera de distribuer les points, estimés de manière empirique, à chaque **PBI**.
+  </StepperItem>
+  <StepperItem title="Validation et révision">
+    Une fois définie, la vélocité servira à valider ou à réviser la planification du développement.
+  </StepperItem>
+</Stepper>
+
+### Exemple de calcul de vélocité
+
+<Note type="success">
+**Principe important :** La vélocité des futures itérations sera plus ou moins égale à la précédente.
+
+**Exemple :** Si les *stories A* et *B* (chacune estimée à *2 points*) sont 100% terminées, et que la story *C* (*3 points*) n'est terminée qu'à 80%, la vélocité de l'itération sera de *4 points* (seules les stories terminées comptent).
+</Note>
+
+![Calcul de vélocité](/images/docs/assets/velocity/what-is-velocity-2.png)
+
+La vélocité peut aussi être calculée en considérant les *story points*. La vélocité d'un sprint spécifique est calculée en multipliant le nombre d'*user stories* terminées dans le sprint par les *story points* attribués à chaque user story.
+
+**Exemple de calcul :**
+- User stories terminées : 4
+- Story points par story : 3
+- **Vélocité totale = 4 × 3 = 12 points**
+
+## Comment utiliser la vélocité moyenne dans le développement agile
+
+**Agile** est synonyme de développement itératif, de solutions rapides et d'entrée rapide sur le marché du produit. Pour y parvenir, les équipes Agile doivent savoir combien de travail elles peuvent faire dans un sprint et combien de temps il faudra pour terminer le projet ou livrer une version fonctionnelle au client.
+
+### Calcul de la vélocité moyenne
+
+<Note type="info">
+La vélocité moyenne est calculée une fois que le projet a progressé à travers **trois ou quatre sprints** (itérations). La vélocité moyenne est calculée en moyennant les story points accumulés dans chaque sprint.
+</Note>
+
+**Exemple pratique :**
+- Sprint 1 : 10 points
+- Sprint 2 : 12 points  
+- Sprint 3 : 14 points
+- Sprint 4 : 12 points
+- **Vélocité moyenne = (10 + 12 + 14 + 12) ÷ 4 = 12 points par sprint**
+
+### Planification de projet avec la vélocité
+
+En utilisant l'exemple ci-dessus de la vélocité moyenne d'un sprint, vous pouvez supposer que l'équipe peut terminer du travail au rythme de *12 story points* par sprint. Donc, si vous avez *120 story points* restants à terminer dans votre projet, vous pouvez estimer qu'il vous faudra *10 sprints supplémentaires* pour finir le projet.
+
+<Note type="warning">
+Bien que ce calcul soit généralement précis, il est sujet aux fluctuations selon les exigences changeantes, la taille de l'équipe et la complexité du projet.
+</Note>
+
+## Graphique de vélocité Agile
+
+La **méthode Agile** offre divers outils pour représenter visuellement les points de données. Ces outils fournissent un indicateur facile du progrès du projet, et s'ils sont basés sur le cloud, ils peuvent être accessibles par toutes les parties prenantes du projet.
+
+Les graphiques de vélocité agile sont essentiellement des graphiques, avec les *story points* affichés sur un axe, et les sprints terminés montrés sur l'axe opposé. C'est un excellent moyen de rendre la vélocité de votre projet accessible à tous.
+
+![Graphique de vélocité](/images/docs/assets/velocity/chart.jpg)
+
+### Lecture des graphiques de vélocité
+
+Un graphique de vélocité est un excellent moyen de :
+- **Suivre le progrès du projet** dans le temps
+- **Identifier la cohérence** dans la performance de l'équipe
+- **Repérer les modèles** dans la vélocité de sprint de l'équipe
+- **Détecter les irrégularités** qui pourraient indiquer des problèmes
+
+<Note type="warning">
+Si vos graphiques montrent beaucoup de pics et de creux irréguliers, vous pourriez conclure que votre projet est imprévisible, car la vélocité n'est pas cohérente.
+</Note>
+
+## Avantages de la mesure de la vélocité
+
+### Essentiel pour la planification des releases
+
+<Note type="success">
+La vélocité est cruciale pour la planification des releases car elle aide le Product Owner à déterminer combien de sprints sont nécessaires pour créer un produit avec les fonctionnalités désirées. En estimant le nombre de sprints nécessaires, le Product Owner peut estimer la date de release.
+</Note>
+
+### Feedback pour l'équipe
+
+La vélocité est une excellente métrique pour mesurer le progrès de l'équipe. En suivant la vélocité dans le temps, les équipes peuvent mesurer si les changements qu'elles apportent durant le sprint améliorent ou réduisent la productivité.
+
+- **Nouvelles équipes** : La vélocité peut fluctuer significativement
+- **Équipes expérimentées** : Ont une vélocité cohérente et peuvent mesurer le progrès via les graphiques de vélocité
+
+### Prévisions
+
+La vélocité aide l'équipe à identifier combien d'user stories elle peut terminer dans un sprint. La **prévisibilité** est un facteur important qui aide les équipes à prendre des décisions sur les délais et budgets de projet.
+
+<Note type="info">
+Les prévisions sont généralement faites en prenant la vélocité moyenne des **trois derniers sprints**.
+</Note>
+
+## Inconvénients et limitations
+
+### Nature empirique
+
+<Note type="warning">
+Bien que la vélocité soit une excellente métrique pour mesurer le progrès de l'équipe, il est important de se rappeler qu'il s'agit d'une **mesure empirique**, ce qui signifie qu'elle peut être utilisée pour l'estimation mais pas comme l'étalon final pour mesurer le progrès de l'équipe.
+</Note>
+
+La vélocité est souvent basée sur les *story points*, qui sont subjectifs à l'équipe. Les équipes peuvent avoir leurs propres valeurs pour les *story points* pour les user stories et, par conséquent, définir leur vélocité et portée de travail.
+
+### Problèmes courants
+
+<Tabs>
+<TabsList>
+<TabsTrigger value="startup">Problèmes de démarrage</TabsTrigger>
+<TabsTrigger value="tasks">Décomposition des tâches</TabsTrigger>
+<TabsTrigger value="downtime">Temps morts</TabsTrigger>
+</TabsList>
+
+<TabsContent value="startup">
+**Problèmes de démarrage**
+
+La vélocité est mieux estimée par des équipes Scrum matures et bien établies. Les équipes nouvelles ou en transition et les équipes embarquant sur de nouveaux projets auront besoin de temps pour devenir des machines bien huilées et atteindre une vélocité précise.
+
+**Solutions :**
+- Permettre 3-4 sprints pour que la vélocité se stabilise
+- Se concentrer sur la cohérence plutôt que sur des chiffres élevés initialement
+- Utiliser les tendances de vélocité plutôt que les valeurs absolues
+</TabsContent>
+
+<TabsContent value="tasks">
+**Problèmes de décomposition des tâches importantes**
+
+Scrum/Agile fonctionne sur le principe de décomposer de gros projets en plus petites pièces. Si les Epics ne sont pas suffisamment détaillées, cela affectera directement la vélocité, et les équipes peuvent voir une chute significative de vélocité d'un sprint à l'autre.
+
+**Solutions :**
+- Assurer un dimensionnement cohérent des stories entre les sprints
+- Décomposer les grandes stories en pièces plus petites et gérables
+- Maintenir une définition de "Terminé" pour la cohérence
+</TabsContent>
+
+<TabsContent value="downtime">
+**Temps morts non pris en compte**
+
+Un sprint n'est pas limité à la livraison ou à la production. Beaucoup de choses se passent entre les deux, comme les échanges d'emails, les réunions stand-up, etc. Si ces éléments ne sont pas considérés dans la durée du sprint, la vélocité peut s'affaiblir.
+
+**Solutions :**
+- Tenir compte des réunions, revues de code et tâches administratives
+- Utiliser la planification de capacité aux côtés de la vélocité
+- Suivre la capacité réelle vs planifiée
+</TabsContent>
+</Tabs>
+
+## Conclusion
+
+La vélocité est une mesure importante utilisée par les Scrum Masters et Product Owners pour suivre le progrès de leur équipe et assurer le succès du projet. Le framework rapide, la livraison rapide, incrémentale et itérative d'Agile assure des releases rapides, des produits de qualité et la satisfaction client.
+
+<Note type="success">
+La vélocité aide à déterminer les délais de projet et permet aux product owners de fournir des estimations précises sans tomber dans le piège du sur-engagement.
+</Note>
+
+**Points clés à retenir :**
+- La vélocité est une métrique spécifique à l'équipe qui s'améliore avec l'expérience
+- L'utiliser pour la planification et les prévisions, pas pour comparer les équipes
+- Se concentrer sur les tendances et la cohérence plutôt que sur les valeurs absolues
+- Combiner avec d'autres métriques pour une image complète de la performance de l'équipe

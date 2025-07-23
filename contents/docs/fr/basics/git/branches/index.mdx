@@ -1,0 +1,218 @@
+---
+title: "Les Branches Git"
+description: "Découvrez les branches Git, un mécanisme puissant pour dupliquer l'historique des commits. Comprenez comment les branches permettent le développement parallèle et le travail collaboratif sans conflits."
+---
+
+# Les Branches Git
+
+Les branches sont un mécanisme qui permet de dupliquer l'historique de commits en plusieurs versions. Elles sont très utiles dans des travaux collaboratifs et constituent l'une des fonctionnalités les plus puissantes de Git. Leur utilisation de base est de séparer les modifications d'un développeur A de celles d'un développeur B. De cette façon, les développeurs ne se marchent pas dessus lors de leur travail.
+
+<Note type="info">
+Ce n'est pas la seule utilité des branches, nous verrons quelques utilisations tierces des branches dans de futurs articles sur le travail collaboratif et les flux de travail Git avancés.
+</Note>
+
+## Ce que sont les branches
+
+Nous allons reprendre un schéma afin de visualiser le fonctionnement des branches :
+
+![Dépôt à Une Branche](/images/docs/assets/basics/git/one-branch-repo.png)
+
+Voilà à quoi votre dépôt ressemble initialement. Dans les faits, vous utilisez déjà une branche, nommée "**main**" qui signifie "principale". Donc vous effectuez vos modifications sur une branche nommée "main", vous avez donc un historique unique.
+
+<Note>
+**Note historique :** La branche par défaut s'appelait "master" mais a été changée pour "main" dans la plupart des configurations Git modernes pour une terminologie plus inclusive.
+</Note>
+
+Voyons ce qu'il se passerait si nous créions une nouvelle branche :
+
+![Dépôt à Deux Branches](/images/docs/assets/basics/git/two-branch-repo.png)
+
+Nous avons dupliqué l'historique de commit, il en existe maintenant deux, c'est très utile pour permettre aux développeurs de développer tranquillement sans affecter le code des autres.
+
+### Travailler sur différentes branches
+
+Voyons ce qu'il se passe si nous travaillons sur cette nouvelle branche :
+
+![Nouveaux Commits sur Nouvelle Branche](/images/docs/assets/basics/git/new-commits.png)
+
+Deux commits ont été ajoutés à l'historique de la nouvelle branche. L'utilité de faire ça peut paraître abstraite, vous saisirez pleinement l'utilité des branches lorsque nous aborderons les travaux collaboratifs avec Git.
+
+## Cas d'usage courants des branches
+
+<Tabs>
+<TabsContent value="feature" label="Développement de Fonctionnalités">
+
+```bash
+# Créer une nouvelle branche pour une fonctionnalité
+git checkout -b feature/authentification-utilisateur
+
+# Travailler sur votre fonctionnalité, faire des commits
+git add auth.js
+git commit -m "Ajouter la fonctionnalité de connexion utilisateur"
+
+# Continuer le développement indépendamment
+git add auth.css
+git commit -m "Styliser les formulaires d'authentification"
+```
+
+</TabsContent>
+<TabsContent value="bugfix" label="Corrections de Bugs">
+
+```bash
+# Créer une branche pour corriger un bug critique
+git checkout -b hotfix/erreur-connexion
+
+# Corriger le bug et commit
+git add login.js
+git commit -m "Corriger l'erreur de validation de connexion"
+
+# La branche main reste stable pendant que vous travaillez
+```
+
+</TabsContent>
+<TabsContent value="experiment" label="Expérimentation">
+
+```bash
+# Créer une branche pour essayer de nouvelles idées
+git checkout -b experiment/nouveau-design-ui
+
+# Expérimenter librement sans risque
+git add *.css
+git commit -m "Essayer un nouveau schéma de couleurs"
+
+# Si ça ne marche pas, retourner simplement à main
+git checkout main
+```
+
+</TabsContent>
+</Tabs>
+
+## Le Merge (La fusion)
+
+Il existe une fonctionnalité qui donne de la matière aux branches : le **merge**. Grâce au merge il est possible de fusionner 2 historiques ensemble, on dit à Git de prendre un historique de commits et d'ajouter les commits qu'il contient au sein d'un autre historique.
+
+Dans le cas où nous travaillons sur deux branches séparées, voici le résultat qu'un merge donnera :
+
+![Fusion de Branches](/images/docs/assets/basics/git/merge.png)
+
+Ici, nous avons fusionné l'historique de commit de la branche "*test branch*" dans la "*main*". Voilà en quoi consiste un merge.
+
+<Note type="success">
+**Important :** Vous noterez que la branche depuis laquelle nous avons fusionné l'historique continue d'exister ; une fusion n'implique pas la suppression de la branche. Cela vous permet de continuer à travailler sur la branche de fonctionnalité si nécessaire.
+</Note>
+
+### Types de fusions
+
+Il existe différents types de fusions dans Git :
+
+<Note type="info">
+**Fusion fast-forward :** Quand la branche cible n'a pas divergé de la branche source, Git déplace simplement le pointeur vers l'avant.
+
+**Fusion à trois voies :** Quand les deux branches ont de nouveaux commits, Git crée un nouveau commit de fusion qui combine les changements des deux branches.
+</Note>
+
+## Commandes de base pour les branches
+
+Voici quelques commandes essentielles pour travailler avec les branches :
+
+```bash
+# Lister toutes les branches
+git branch
+
+# Créer une nouvelle branche
+git branch nom-fonctionnalité
+
+# Changer vers une branche
+git checkout nom-fonctionnalité
+
+# Créer et changer en une seule commande
+git checkout -b nom-fonctionnalité
+
+# Fusionner une branche dans la branche courante
+git merge nom-fonctionnalité
+
+# Supprimer une branche (après fusion)
+git branch -d nom-fonctionnalité
+```
+
+## Exemple de flux de travail avec les branches
+
+<Tabs>
+<TabsContent value="complete" label="Flux Complet">
+
+```bash
+# 1. Commencer depuis la branche main
+git checkout main
+
+# 2. Créer et changer vers une nouvelle branche de fonctionnalité
+git checkout -b feature/panier-achat
+
+# 3. Faire vos modifications et commit
+git add cart.js
+git commit -m "Ajouter la fonctionnalité panier d'achat"
+
+git add cart.css
+git commit -m "Styliser l'interface du panier d'achat"
+
+# 4. Retourner à main
+git checkout main
+
+# 5. Fusionner votre fonctionnalité
+git merge feature/panier-achat
+
+# 6. Nettoyer (optionnel)
+git branch -d feature/panier-achat
+```
+
+</TabsContent>
+<TabsContent value="collaborative" label="Scénario Collaboratif">
+
+```bash
+# Le développeur A travaille sur l'authentification
+git checkout -b feature/authentification
+# ... fait des commits ...
+
+# Le développeur B travaille sur le profil utilisateur  
+git checkout -b feature/profil-utilisateur
+# ... fait des commits ...
+
+# Les deux peuvent travailler simultanément sans conflits
+# Plus tard, les deux fonctionnalités peuvent être fusionnées vers main
+git checkout main
+git merge feature/authentification
+git merge feature/profil-utilisateur
+```
+
+</TabsContent>
+</Tabs>
+
+## Avantages de l'utilisation des branches
+
+<Note type="success">
+**Isolation :** Chaque fonctionnalité ou correction est développée en isolation, empêchant le code incomplet d'affecter la base de code principale.
+
+**Développement parallèle :** Plusieurs développeurs peuvent travailler sur différentes fonctionnalités simultanément sans conflits.
+
+**Expérimentation :** Vous pouvez essayer de nouvelles idées sans crainte de casser les fonctionnalités existantes.
+
+**Révision de code :** Les branches facilitent les processus de révision de code avant de fusionner les changements dans la branche principale.
+</Note>
+
+## Conclusion
+
+Nous aborderons des cas d'utilisation plus concrets un peu plus tard, particulièrement quand nous explorerons les flux de travail collaboratifs et les techniques Git avancées. Cet article avait simplement pour but de présenter sommairement les branches ainsi qu'un cas d'utilisation de ces dernières.
+
+Comprendre les branches est crucial pour une utilisation efficace de Git, surtout dans des environnements d'équipe où plusieurs développeurs travaillent sur le même projet simultanément.
+
+## Résumé
+
+- **Les branches** sont un mécanisme qui duplique un historique de commit en lignes de développement séparées
+- **La branche main** (anciennement "master") est la branche principale créée par défaut
+- **Plusieurs branches** permettent aux développeurs de travailler indépendamment sans s'interférer
+- **La fusion** combine l'historique de commits d'une branche dans une autre
+- Les branches **continuent d'exister** après fusion sauf si explicitement supprimées
+- Les branches permettent le **développement parallèle**, l'**expérimentation**, et l'**isolation des fonctionnalités**
+
+<Note>
+Dans le prochain article, nous explorerons le [travail collaboratif](/docs/basics/git/collaborative-work) pour voir comment les branches facilitent le développement en équipe et la gestion des dépôts distants.
+</Note>

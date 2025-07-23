@@ -1,0 +1,269 @@
+---
+title: "Planning Poker"
+description: "Maîtrisez le Planning Poker (SCRUM Poker), une technique d'estimation collaborative utilisée par les équipes Agile pour estimer la difficulté des tâches par consensus. Apprenez le processus, les avantages et les meilleures pratiques."
+---
+
+# Planning Poker
+
+**La méthode Agile du planning poker consiste en une estimation de la difficulté des tâches fondée sur un consensus.**
+
+Le **Planning Poker**, également connu sous le nom de "**SCRUM Poker**" ou "pointing poker", est une technique ludique que les **équipes de développement** utilisent pour des tâches de gestion de projet. Ces **estimations** sont **basées** sur un **consensus** de l'ensemble du groupe, ce qui rend ces dernières plus précises que d'autres méthodes. Pour aider à évaluer le nombre de story points pour les tâches pertinentes, les **équipes** utilisent des **cartes de poker** de planification.
+
+![Cartes de Planning Poker](/images/docs/assets/planning-poker/cards.png)
+
+## Valeurs des cartes et suite de Fibonacci
+
+La *suite de Fibonacci* est utilisée pour les évaluations. Comme nous cherchons à **quantifier l'effort**, le message est clair : *plus le scénario est gros*, **moins l'évaluation est précise**.
+
+<Note type="info">
+Le paquet de cartes utilisé pour le Planning Poker *doit comporter* les valeurs suivantes : **1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144**.
+
+Certains simplifient les grandes valeurs en les transformant en 20, 40, 100... puisqu'il s'agit d'être "globalement bon" plutôt que "précisément erroné". On y ajoute généralement les valeurs 0 et 1/2.
+</Note>
+
+### Signification des valeurs des cartes
+
+<Tabs>
+<TabsList>
+<TabsTrigger value="small">Petites valeurs (0-3)</TabsTrigger>
+<TabsTrigger value="medium">Valeurs moyennes (5-13)</TabsTrigger>
+<TabsTrigger value="large">Grandes valeurs (21+)</TabsTrigger>
+<TabsTrigger value="special">Cartes spéciales</TabsTrigger>
+</TabsList>
+
+<TabsContent value="small">
+**0** - Aucun effort requis (tâche déjà faite ou non nécessaire)  
+**1/2** - Tâche triviale, effort minimal  
+**1** - Tâche très simple  
+**2** - Petite tâche avec complexité mineure  
+**3** - Tâche petite à moyenne
+</TabsContent>
+
+<TabsContent value="medium">
+**5** - Tâche de complexité moyenne  
+**8** - Tâche complexe nécessitant un effort significatif  
+**13** - Tâche large et complexe
+</TabsContent>
+
+<TabsContent value="large">
+**21+** - Tâches très larges qui devraient probablement être décomposées en plus petites stories
+
+Ces valeurs indiquent que la tâche est trop large pour être estimée précisément et devrait être décomposée.
+</TabsContent>
+
+<TabsContent value="special">
+**?** - Pas assez d'informations pour estimer  
+**∞** - Tâche trop large ou impossible  
+**☕** - Besoin d'une pause (ajout ludique)
+</TabsContent>
+</Tabs>
+
+## Comment se déroule un Planning Poker
+
+![Réunion de Planning Poker](/images/docs/assets/planning-poker/meeting.jpg)
+
+Au début d'une session du Planning Poker, le **Product Owner** ou **le client** examine une *user story* agile et la lit **à haute voix**. Une user story est une explication générale et informelle d'une fonctionnalité logicielle qui décrit comment elle offrira de la valeur à l'utilisateur final.
+
+### Le processus
+
+<Stepper>
+  <StepperItem title="Distribuer les cartes">
+    Distribuer un jeu de cartes identique à chaque participant. Chaque carte a un numéro convenu par l'équipe. Mike Cohn recommande une séquence de 0, 1, 2, 3, 5, 8, 13, 20, 40, et 100 dans son livre "*Agile Estimating and Planning*."
+  </StepperItem>
+  
+  <StepperItem title="Lire la story">
+    Le modérateur (**Product Owner**) raconte la story au groupe. Si les participants ont des questions, le modérateur y répond.
+  </StepperItem>
+  
+  <StepperItem title="Discuter la story">
+    Après que le groupe ait fini d'écouter la story, chaque personne partage sa perspective dessus.
+  </StepperItem>
+  
+  <StepperItem title="Sélectionner et révéler">
+    Après la discussion, chaque personne choisit privément une carte du jeu. Une fois que tout le monde a choisi une carte, **ils les révèlent simultanément**.
+  </StepperItem>
+  
+  <StepperItem title="Atteindre un consensus">
+    Quand les membres de l'équipe montrent la même carte, ce numéro devient consensus. Si les cartes varient, une discussion supplémentaire suit jusqu'à ce qu'un accord soit atteint.
+  </StepperItem>
+</Stepper>
+
+### Étapes détaillées du processus
+
+#### 1. Distribuer les cartes aux participants
+
+<Note type="info">
+Chaque joueur devrait avoir un jeu de cartes avec différents numéros. Ces valeurs peuvent représenter une variété de choses : le nombre de story points, les jours idéaux, ou d'autres unités que l'équipe utilise pour l'estimation.
+
+Les jeux de cartes ont intentionnellement un **niveau minimal** avec des sauts significatifs dans les numéros. Cela assure que pour chaque story, tout le monde peut atteindre un numéro de consensus. *S'il y avait une carte pour chaque numéro de 1 à 50*, **le processus serait terriblement lent**.
+</Note>
+
+#### 2. Lire la story à haute voix
+
+Le modérateur (**Product Owner**) raconte la story au groupe. Si les participants ont des questions, le modérateur y répond avec suffisamment de détail pour une estimation précise.
+
+#### 3. Discuter la story
+
+Après que le groupe ait fini d'écouter la story, *chaque personne partage sa perspective* dessus. Certains des points de discussion incluront probablement des questions comme :
+
+- Comment devrions-nous approcher le travail ?
+- Combien de personnes sont attendues pour être impliquées ?
+- Quelles compétences seront nécessaires pour travailler sur la story ?
+- Comment aborder les obstacles qui entravent le progrès ?
+
+Le groupe essaiera aussi d'en apprendre plus sur la story et poser des questions pour mieux la comprendre.
+
+#### 4. Sélectionner et révéler
+
+Après la discussion, chaque personne choisit privément une carte du jeu. Typiquement, elle est utilisée pour montrer une estimation des points de la story (mais elle peut aussi représenter le nombre de jours idéaux). Une fois que tout le monde a choisi une carte, **ils les révèlent simultanément**.
+
+<Note type="warning">
+Si un joueur montre une carte plus élevée, cela signifie que la **story** sera **terminée** avec plus de **difficulté** et plus de **temps engagé**. Gardez en tête qu'il est commun que les estimations varient significativement initialement.
+</Note>
+
+#### 5. Atteindre un consensus
+
+Quand les membres de l'équipe montrent la même carte, ce numéro devient consensus. À ce point, le groupe peut procéder et travailler sur la prochaine story. Cependant, si les cartes continuent à varier, de nouvelles discussions sur la story suivront.
+
+<Note type="success">
+Les participants dont les estimations sont plus élevées ou plus basses que les autres communiqueront leur perspective. Ils tenteront alors d'expliquer à leurs coéquipiers les raisons de la divergence. Une fois cette délibération supplémentaire terminée, tout le monde révisera leurs cartes et les révélera à nouveau.
+
+Généralement, les estimations commencent à converger après le second tour. Si ce n'est pas le cas, le processus est répété jusqu'à ce que l'équipe s'accorde sur un seul numéro.
+</Note>
+
+## Avantages du Planning Poker
+
+Selon les études, les *estimations du Planning Poker* sont **statistiquement plus précises** que les **estimations individuelles**.
+
+### Avantages clés
+
+<Tabs>
+<TabsList>
+<TabsTrigger value="relative">Estimation relative</TabsTrigger>
+<TabsTrigger value="voice">Voix égale</TabsTrigger>
+<TabsTrigger value="gaps">Identifier les lacunes</TabsTrigger>
+</TabsList>
+
+<TabsContent value="relative">
+### Estimer les tâches relativement les unes aux autres
+
+Il est *souvent difficile d'évaluer le temps absolu nécessaire pour un projet*, surtout quand c'est la première fois. Le Planning Poker permet aux équipes de se familiariser avec leurs évaluations.
+
+Après avoir joué le jeu pendant quelque temps, *vous construirez éventuellement un ensemble de tâches qui servent de référence future pour la comparaison*.
+
+**Avantages :**
+- Crée une compréhension partagée de la complexité
+- Développe les capacités d'estimation de l'équipe au fil du temps
+- Fournit des points de référence pour les estimations futures
+</TabsContent>
+
+<TabsContent value="voice">
+### Donner une voix égale à tous les membres de l'équipe
+
+Cela peut encourager les nouveaux employés à s'exprimer en jouant une carte et en expliquant leur logique.
+
+**Exemple de scénario :**
+Imaginez que vous construisez une app de réservation de nourriture. Vous et votre collègue pourriez donner une estimation plus petite, comme 5 ou 8. D'autre part, un nouvel employé pourrait donner une estimation de 21. Peut-être ont-ils de l'expérience de création d'une app similaire dans leur travail précédent et savent qu'une telle app prend beaucoup de temps, surtout en comparaison aux autres.
+
+**Avantages :**
+- Empêche les personnalités dominantes d'influencer les estimations
+- Encourage la participation de tous les membres de l'équipe
+- Exploite l'expérience et les perspectives diverses
+</TabsContent>
+
+<TabsContent value="gaps">
+### Identifier les lacunes dans les exigences et l'implémentation
+
+Quand les participants divulguent leurs estimations, ils doivent les soutenir en expliquant pourquoi elles sont élevées ou basses. Cela peut déclencher des questions sur les exigences et l'implémentation – une boucle de feedback qui aide à détecter les lacunes.
+
+**Avantages :**
+- Révèle les complexités cachées tôt
+- Améliore la compréhension des exigences
+- Identifie les défis d'implémentation avant le début du développement
+</TabsContent>
+</Tabs>
+
+## Qui devrait participer au Planning Poker
+
+![Équipe de Planning Poker](/images/docs/assets/planning-poker/team.jpg)
+
+Les bonnes personnes doivent rejoindre la réunion, sinon, il devient difficile de récolter les avantages décrits ci-dessus. Ces rôles cruciaux sont les suivants :
+
+<Note type="info">
+**Participants essentiels :**
+
+- **Membres de l'équipe Scrum** : Fournissent les items pour le Product Backlog et contribuent aux discussions sur les story points
+- **Scrum Master** : Facilite les réunions agiles et devrait participer à toutes (ou presque toutes) les réunions
+- **Product Owner** : Décrit toutes les user stories à l'équipe et répond à leurs questions
+</Note>
+
+### Participants optionnels
+
+- **Architectes techniques** : Pour les stories techniques complexes
+- **Designers UX/UI** : Pour les stories d'interface utilisateur et d'expérience
+- **Assurance qualité** : Pour les stories avec des implications de test significatives
+- **Experts du domaine** : Quand des connaissances spécialisées sont requises
+
+## Quand organiser des réunions de Planning Poker
+
+### Planification initiale
+
+En général, les équipes organisent une session **après la création du backlog initial**. Bien que les sessions puissent parfois prendre **plus d'une journée**, elles aident à établir des **estimations initiales utiles** pour le dimensionnement ou la portée du projet.
+
+### Planification continue
+
+Les items sont ajoutés au Product Backlog **de façon incrémentale tout au long de la durée de vie du projet**. C'est pourquoi il est typiquement plus pratique pour les équipes de conduire des sessions *une fois par itération*.
+
+<Note type="success">
+**Meilleures pratiques de timing :**
+
+- **Après la fin du sprint** : Quelques jours après la fin de l'itération
+- **Pendant le refinement du backlog** : Sessions de grooming régulières
+- **Juste après le daily standup** : Quand toute l'équipe est présente
+- **Avant la planification de sprint** : Pour avoir les estimations prêtes pour la planification
+</Note>
+
+### Fréquence des sessions
+
+- **Hebdomadaire** : Pour les équipes avec des backlogs qui changent rapidement
+- **Bi-hebdomadaire** : Approche la plus commune, alignée avec les cycles de sprint  
+- **Mensuelle** : Pour les équipes stables avec des backlogs bien définis
+- **Ad-hoc** : Quand de nouvelles stories complexes sont ajoutées
+
+## Meilleures pratiques et conseils
+
+<Stepper>
+  <StepperItem title="Garder les sessions focalisées">
+    Limiter les sessions à 2-3 heures maximum. Diviser les grandes sessions en plusieurs plus courtes.
+  </StepperItem>
+  
+  <StepperItem title="Préparer les stories à l'avance">
+    S'assurer que toutes les stories ont des critères d'acceptation clairs et sont bien définies avant la session.
+  </StepperItem>
+  
+  <StepperItem title="Ne pas moyenner les estimations">
+    Travailler vers un consensus plutôt que des moyennes mathématiques. La discussion est plus précieuse que les chiffres.
+  </StepperItem>
+  
+  <StepperItem title="Décomposer les grandes stories">
+    Si une story reçoit consistament des estimations élevées (13+), considérer la décomposer en plus petites pièces.
+  </StepperItem>
+  
+  <StepperItem title="Documenter les suppositions">
+    Enregistrer les suppositions clés et les décisions prises pendant l'estimation pour référence future.
+  </StepperItem>
+</Stepper>
+
+## Conclusion
+
+Le Planning Poker est une technique puissante qui combine les avantages de l'estimation d'expert avec la collaboration d'équipe. Il aide les équipes à créer des estimations plus précises tout en construisant une compréhension partagée et en identifiant les problèmes potentiels tôt dans le processus de développement.
+
+<Note type="success">
+**Facteurs clés de succès :**
+- S'assurer que tous les membres de l'équipe participent activement
+- Se concentrer sur la discussion et la compréhension, pas seulement les chiffres
+- Utiliser les estimations pour la planification, pas pour mesurer la performance de l'équipe
+- Raffiner continuellement vos compétences d'estimation en équipe
+</Note>
+
+La nature collaborative du Planning Poker en fait un outil essentiel pour les équipes Agile cherchant à améliorer leur précision d'estimation et construire de meilleurs produits à travers une compréhension partagée et une planification basée sur le consensus.

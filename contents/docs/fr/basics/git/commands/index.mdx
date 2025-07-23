@@ -1,0 +1,200 @@
+---
+title: "Commandes Git de Base"
+description: "Maîtrisez les commandes Git fondamentales que tout développeur doit connaître : init, add, commit et restore. Apprenez à interagir efficacement avec Git en ligne de commande."
+---
+
+# Commandes Git de Base
+
+Les commandes Git sont la façon d'interagir avec Git. Elles permettent de dire à Git d'effectuer telle ou telle action. Ces commandes sont entrées dans votre terminal (shell). Cet article présente les commandes les plus basiques que tout développeur devrait maîtriser.
+
+<Note type="info">
+Si vous n'avez pas lu l'article sur le [fonctionnement de Git](/docs/basics/git/git-functions), veuillez en prendre connaissance avant de lire celui-ci, car il fournit les connaissances de base essentielles.
+</Note>
+
+## Initialiser Git dans un projet
+
+Pour initialiser Git dans un projet, entrez la commande suivante :
+
+```bash
+git init
+```
+
+Cette commande aura pour effet de créer un dossier `.git` dans le répertoire dans lequel vous vous trouvez au moment de son exécution. Par exemple si vous étiez dans `/mon_projet_git/`, alors un dossier `.git` serait créé dans ce dossier et vous y accéderiez en vous rendant à `/mon_projet_git/.git`.
+
+<Note type="warning">
+Il est possible que vous ne voyiez pas de dossier `.git` dans un listing normal, le `.` avant `git` en fait un dossier caché. Tapez la commande `ls -al` et vous devriez le voir apparaître.
+</Note>
+
+Voilà, Git est initialisé dans votre projet et prêt à traquer vos fichiers !
+
+## Préparer des modifications à un commit
+
+Pour préparer les fichiers qui ont subi des modifications, entrez la commande suivante :
+
+```bash
+git add [nom_du_fichier]
+```
+
+Ce qui aura pour effet de mettre votre fichier dans la stage area, le préparant pour le prochain commit.
+
+### Ajouter des fichiers individuels
+
+Par exemple :
+
+```bash
+git add index.js
+```
+
+Cela mettra `index.js` dans la stage area et vous pourrez alors inclure ce fichier à votre prochain commit.
+
+### Ajouter des dossiers
+
+Il est possible de faire la même opération sur un dossier complet :
+
+```bash
+git add mon_dossier/
+```
+
+Ce qui aura pour effet de mettre tous les fichiers ayant subi des modifications de ce dossier dans la stage area.
+
+### Ajouter tous les changements
+
+Si vous souhaitez ajouter tous vos fichiers modifiés dans un commit, vous pouvez utiliser :
+
+```bash
+git add .
+```
+
+<Note type="warning">
+**Utilisez avec précaution !** Cette commande aura pour effet de déplacer tous les fichiers ayant reçu des modifications dans la stage area, à partir du répertoire dans lequel vous exécutez cette commande. Par exemple, si vous utilisez cette commande dans `/mon_projet_git/articles/`, alors tous les fichiers contenus dans `/mon_projet_git/articles/`, ainsi que tous ceux dans les dossiers de ce dossier, de façon récursive, seront ajoutés.
+
+Évitez au maximum cette approche, sauf si vous ne modifiez qu'un fichier à la fois et que vous faites vos commits en temps réel.
+</Note>
+
+## Retirer un fichier de la stage area
+
+Il est possible que vous vous soyez trompé dans la préparation des fichiers. Par exemple, vous vous rendez compte que vous avez mis un fichier qui n'avait rien à faire dans le commit que vous avez prévu de faire. Dans ce cas, entrez la commande :
+
+```bash
+git restore --staged [nom_du_fichier_à_retirer]
+```
+
+### Retirer plusieurs fichiers
+
+Vous pouvez aussi retirer des dossiers entiers :
+
+```bash
+git restore --staged mon_dossier/
+```
+
+Ou retirer tous les fichiers :
+
+```bash
+git restore --staged .
+```
+
+<Note type="danger">
+**Attention importante :** Utilisez cette commande avec précaution. Cette commande **sans l'option `--staged`** aura pour effet de remettre le fichier/dossier spécifié à son dernier état connu (celui de votre dépôt local), **supprimant toutes vos modifications actuelles**.
+
+```bash
+# Ceci est DANGEREUX - cela supprimera vos modifications !
+git restore index.js
+```
+</Note>
+
+## Enregistrer un commit
+
+Si vous avez des fichiers dans votre stage area, vous voulez sans doute faire un commit. Pour ce faire, entrez la commande suivante :
+
+```bash
+git commit
+```
+
+Cela aura pour effet de vous ouvrir un éditeur de texte comme Vi ou Nano selon celui que vous avez configuré. C'est assez long à faire de cette façon, c'est pourquoi il existe une option à cette commande qui rend l'opération plus fluide :
+
+```bash
+git commit -m "message de commit"
+```
+
+En ajoutant l'option `-m`, vous spécifiez directement le message du commit sans ouvrir d'éditeur.
+
+### Exemple de commit
+
+```bash
+git commit -m "Implémentation de ma super fonction très utile"
+```
+
+<Note type="success">
+Votre commit est maintenant terminé ! La version du fichier qui se trouvait dans la stage area a été copiée dans votre dépôt local. Les fichiers qui se trouvaient précédemment dans la stage area ne s'y trouvent plus, puisqu'ils ont été validés.
+</Note>
+
+## Exemple de flux de travail
+
+Voici un flux de travail typique combinant ces commandes :
+
+<Tabs>
+<TabsContent value="workflow" label="Flux Complet">
+
+```bash
+# 1. Initialiser Git dans votre projet
+git init
+
+# 2. Apporter des modifications à vos fichiers
+# ... éditer index.js ...
+
+# 3. Préparer les modifications
+git add index.js
+
+# 4. Valider les modifications
+git commit -m "Ajout d'une nouvelle fonctionnalité à index.js"
+
+# 5. Si vous avez fait une erreur, vous pouvez retirer des fichiers
+git restore --staged index.js
+
+# 6. Préparer et valider à nouveau
+git add index.js
+git commit -m "Implémentation corrigée de la nouvelle fonctionnalité"
+```
+
+</TabsContent>
+<TabsContent value="shortcuts" label="Raccourcis Utiles">
+
+```bash
+# Préparer tous les fichiers modifiés (à utiliser avec précaution)
+git add .
+
+# Retirer tous les fichiers de la stage area
+git restore --staged .
+
+# Commit avec message en ligne
+git commit -m "Votre message de commit descriptif"
+
+# Voir le statut actuel
+git status
+
+# Voir l'historique des commits
+git log --oneline
+```
+
+</TabsContent>
+</Tabs>
+
+## Conclusion
+
+Vous devriez maintenant être capable d'utiliser Git de manière basique. Ces commandes fondamentales forment la base de l'utilisation de Git et sont essentielles pour tout développeur travaillant avec le contrôle de version. Les prochains articles seront dédiés à des notions plus avancées mais aussi plus concrètes comme les branches et le travail collaboratif.
+
+## Résumé
+
+- **Les commandes** sont un moyen d'interagir avec Git pour effectuer des actions
+- **`git init`** initialise Git dans un dossier, créant le dossier `.git`
+- **`git add [fichier/dossier]`** prépare des fichiers pour le prochain commit
+  - Utilisez des noms de fichiers spécifiques pour un contrôle précis
+  - Utilisez `.` pour préparer tous les changements (avec précaution)
+- **`git restore --staged [fichier/dossier]`** retire des fichiers de la stage area
+  - **Attention :** Sans `--staged`, cette commande supprime définitivement les modifications
+- **`git commit`** valide et sauvegarde les modifications préparées dans le dépôt
+  - Utilisez `-m "message"` pour spécifier directement le message de commit
+
+<Note>
+Dans le prochain article, nous explorerons les [branches Git](/docs/basics/git/branches) pour apprendre à travailler sur plusieurs fonctionnalités simultanément sans conflits.
+</Note>

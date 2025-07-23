@@ -1,0 +1,193 @@
+---
+title: "GitFlow Workflow"
+description: "Master GitFlow, a powerful workflow for Git that organizes development into semantic branches. Learn installation, initialization, and management of feature and hotfix branches."
+---
+
+# GitFlow Workflow
+
+GitFlow is a **workflow** that allows working on separated branches, making it semantically easy to identify what changes are brought by different branches.
+
+Using GitFlow is a way to work optimally on a project, using specific branches for specific kinds of changes. It tells everyone, by the nature of the branch, what kind of work has been achieved through this branch.
+
+<Note type="info">
+Although GitFlow is just a method to work with Git, a program exists to automate Git usage for the GitFlow workflow, making it much easier to manage branch workflows.
+</Note>
+
+## Installation
+
+### Windows
+
+Under Windows, Git already contains the GitFlow module, so if you've already installed Git, you can use GitFlow. Otherwise, [install Git here](https://git-scm.com/download/win).
+
+### Mac
+
+To install the GitFlow module under Mac using HomeBrew:
+
+```bash
+brew install git-flow
+```
+
+### Linux
+
+<Tabs>
+<TabsList>
+<TabsTrigger value="apt">APT (Ubuntu/Debian)</TabsTrigger>
+<TabsTrigger value="pacman">Pacman (Arch)</TabsTrigger>
+</TabsList>
+
+<TabsContent value="apt">
+To install GitFlow module under Linux using APT:
+
+```bash
+sudo apt-get install git-flow
+```
+</TabsContent>
+
+<TabsContent value="pacman">
+To install GitFlow module under Linux using Pacman:
+
+```bash
+sudo pacman -S gitflow-avh
+```
+</TabsContent>
+</Tabs>
+
+## Getting Started
+
+### Initialization
+
+To initialize GitFlow, you have to execute the command:
+
+```bash
+git flow init
+```
+
+This can be run in a folder that can already be a Git repository, or not.
+
+![GitFlow Initialization](/images/docs/assets/basics/gitflow/gitflow-init.png)
+
+<Note type="success">
+It's recommended to name the main branch as `main` instead of `master` for modern Git practices.
+
+For the rest, you can set the names that you want, although the default names are preferred to be kept in most cases.
+</Note>
+
+## Feature Branches
+
+Feature branches are useful when you have to start new feature development. Although they're just basic branches, they bring semantic information about what changes are made through those branches.
+
+They indicate clearly to everybody that the changes made into them will concern new feature development.
+
+### Creation
+
+To create a `feature` branch, nothing could be easier - just run the command:
+
+```bash
+git flow feature start <branch_name>
+```
+
+![GitFlow Feature](/images/docs/assets/basics/gitflow/gitflow-feature.png)
+
+<Note type="info">
+**Equivalent commands without using GitFlow module:**
+
+```bash
+git checkout develop
+git checkout -b feature/<branch_name>
+```
+</Note>
+
+### Finalization
+
+When your work is done and you want to add it to the `develop` branch, you just have to do:
+
+```bash
+git flow feature finish <branch_name>
+git pull origin develop
+```
+
+That way, you'll merge the changes you made and pull the changes that others did on the `develop` branch.
+
+<Note type="info">
+**Equivalent commands without using GitFlow module:**
+
+```bash
+git checkout develop
+git merge feature/<branch_name>
+git branch -D feature/<branch_name>
+git pull origin develop
+```
+</Note>
+
+## Hotfix Branches
+
+Hotfix branches have semantic utility too - they're used to bring fixes to features or systems involved in your project. These branches are typically created from the main branch to fix critical issues in production.
+
+### Creation
+
+To create a `hotfix` branch, it's easy - you just have to run:
+
+```bash
+git flow hotfix start <branch_name>
+```
+
+<Note type="info">
+**Equivalent commands without using GitFlow module:**
+
+```bash
+git checkout main
+git checkout -b hotfix/<branch_name>
+```
+</Note>
+
+### Finalization
+
+When your work is done, you have to close this branch by running:
+
+```bash
+git flow hotfix finish <branch_name>
+```
+
+<Note type="warning">
+**Important:** Hotfix finalization will merge the changes into both `main` and `develop` branches to ensure the fix is present in both production and future development.
+
+**Equivalent commands without using GitFlow module:**
+
+```bash
+git checkout main
+git merge hotfix/<branch_name>
+git checkout develop
+git merge hotfix/<branch_name>
+git branch -D hotfix/<branch_name>
+```
+</Note>
+
+## GitFlow Branch Structure
+
+<Stepper>
+  <StepperItem title="Main Branch">
+    Contains production-ready code. Only receives merges from hotfix and release branches.
+  </StepperItem>
+  <StepperItem title="Develop Branch">
+    Contains the latest development changes. Features are merged here and this is where releases are prepared.
+  </StepperItem>
+  <StepperItem title="Feature Branches">
+    Created from develop for new features. Merged back to develop when complete.
+  </StepperItem>
+  <StepperItem title="Hotfix Branches">
+    Created from main for critical fixes. Merged to both main and develop.
+  </StepperItem>
+</Stepper>
+
+## Summary
+
+- **GitFlow** is a workflow that provides semantic meaning to different branches
+- **Installation** varies by platform but is available for Windows, Mac, and Linux
+- **Initialization** with `git flow init` sets up the branch structure
+- **Feature branches** are used for new feature development
+- **Hotfix branches** are used for critical fixes that need to go to production immediately
+- Each branch type has specific creation and finalization commands that automate the underlying Git operations
+
+<Note>
+GitFlow is particularly useful for larger teams and projects with regular releases. For smaller projects or teams practicing continuous deployment, simpler workflows like GitHub Flow might be more appropriate.
+</Note>

@@ -1,0 +1,218 @@
+---
+title: "Git Branches"
+description: "Learn about Git branches, a powerful mechanism for duplicating commit history. Understand how branches enable parallel development and collaborative work without conflicts."
+---
+
+# Git Branches
+
+Branches are a mechanism that allows duplicating the commit history into multiple versions. They are very useful in collaborative work and are one of Git's most powerful features. Their basic use is to separate the changes made by one developer (Developer A) from those made by another developer (Developer B). This way, developers don't interfere with each other's work.
+
+<Note type="info">
+Branches have more than one purpose, and we will explore additional uses of branches in future articles on collaborative work and advanced Git workflows.
+</Note>
+
+## What Branches Are
+
+Let's revisit a diagram to visualize how branches work:
+
+![One Branch Repository](/images/docs/assets/basics/git/one-branch-repo.png)
+
+This is what your repository looks like initially. In reality, you are already using a branch called "**main**," which represents the primary branch. So you make your changes on the "main" branch, and you have a single commit history.
+
+<Note>
+**Historical note:** The default branch used to be called "master" but has been changed to "main" in most modern Git configurations for more inclusive terminology.
+</Note>
+
+Let's see what would happen if we created a new branch:
+
+![Two Branches Repository](/images/docs/assets/basics/git/two-branch-repo.png)
+
+We duplicated the commit history, and now there are two branches. This is very useful to allow developers to work independently without affecting each other's code.
+
+### Working on Different Branches
+
+Let's see what happens when we work on this new branch:
+
+![New Commits on New Branch](/images/docs/assets/basics/git/new-commits.png)
+
+Two commits have been added to the history of the new branch. The usefulness of doing this may seem abstract, but you'll fully grasp the benefits of branches when we delve into collaborative work with Git.
+
+## Common Branch Use Cases
+
+<Tabs>
+<TabsContent value="feature" label="Feature Development">
+
+```bash
+# Create a new branch for a feature
+git checkout -b feature/user-authentication
+
+# Work on your feature, make commits
+git add auth.js
+git commit -m "Add user login functionality"
+
+# Continue development independently
+git add auth.css
+git commit -m "Style authentication forms"
+```
+
+</TabsContent>
+<TabsContent value="bugfix" label="Bug Fixes">
+
+```bash
+# Create a branch to fix a critical bug
+git checkout -b hotfix/login-error
+
+# Fix the bug and commit
+git add login.js
+git commit -m "Fix login validation error"
+
+# The main branch remains stable while you work
+```
+
+</TabsContent>
+<TabsContent value="experiment" label="Experimentation">
+
+```bash
+# Create a branch to try new ideas
+git checkout -b experiment/new-ui-design
+
+# Experiment freely without risk
+git add *.css
+git commit -m "Try new color scheme"
+
+# If it doesn't work, just switch back to main
+git checkout main
+```
+
+</TabsContent>
+</Tabs>
+
+## Merge
+
+There's a feature that gives branches more substance: the **merge**. With merge, you can combine two histories. You tell Git to take one commit history and add the commits it contains to another history.
+
+In the case where we're working on two separate branches, this is the result of a merge:
+
+![Branch Merge](/images/docs/assets/basics/git/merge.png)
+
+Here, we've merged the commit history of the "*test branch*" into "*main*". That's what a merge is all about.
+
+<Note type="success">
+**Important:** You'll notice that the branch from which we merged the history continues to exist; a merge doesn't involve deleting the branch. This allows you to continue working on the feature branch if needed.
+</Note>
+
+### Types of Merges
+
+There are different types of merges in Git:
+
+<Note type="info">
+**Fast-forward merge:** When the target branch hasn't diverged from the source branch, Git simply moves the pointer forward.
+
+**Three-way merge:** When both branches have new commits, Git creates a new merge commit that combines the changes from both branches.
+</Note>
+
+## Basic Branch Commands
+
+Here are some essential commands for working with branches:
+
+```bash
+# List all branches
+git branch
+
+# Create a new branch
+git branch feature-name
+
+# Switch to a branch
+git checkout feature-name
+
+# Create and switch in one command
+git checkout -b feature-name
+
+# Merge a branch into current branch
+git merge feature-name
+
+# Delete a branch (after merging)
+git branch -d feature-name
+```
+
+## Branch Workflow Example
+
+<Tabs>
+<TabsContent value="complete" label="Complete Workflow">
+
+```bash
+# 1. Start from main branch
+git checkout main
+
+# 2. Create and switch to new feature branch
+git checkout -b feature/shopping-cart
+
+# 3. Make your changes and commit
+git add cart.js
+git commit -m "Add shopping cart functionality"
+
+git add cart.css
+git commit -m "Style shopping cart interface"
+
+# 4. Switch back to main
+git checkout main
+
+# 5. Merge your feature
+git merge feature/shopping-cart
+
+# 6. Clean up (optional)
+git branch -d feature/shopping-cart
+```
+
+</TabsContent>
+<TabsContent value="collaborative" label="Collaborative Scenario">
+
+```bash
+# Developer A works on authentication
+git checkout -b feature/authentication
+# ... makes commits ...
+
+# Developer B works on user profile  
+git checkout -b feature/user-profile
+# ... makes commits ...
+
+# Both can work simultaneously without conflicts
+# Later, both features can be merged to main
+git checkout main
+git merge feature/authentication
+git merge feature/user-profile
+```
+
+</TabsContent>
+</Tabs>
+
+## Benefits of Using Branches
+
+<Note type="success">
+**Isolation:** Each feature or fix is developed in isolation, preventing incomplete code from affecting the main codebase.
+
+**Parallel Development:** Multiple developers can work on different features simultaneously without conflicts.
+
+**Experimentation:** You can try new ideas without fear of breaking existing functionality.
+
+**Code Review:** Branches facilitate code review processes before merging changes into the main branch.
+</Note>
+
+## Conclusion
+
+We will delve into more concrete use cases later, particularly when we explore collaborative workflows and advanced Git techniques. This article was meant to provide a brief overview of branches and introduce you to one of their primary use cases.
+
+Understanding branches is crucial for effective Git usage, especially in team environments where multiple developers work on the same project simultaneously.
+
+## Summary
+
+- **Branches** are a mechanism for duplicating commit history into separate development lines
+- The **main branch** (formerly "master") is the primary branch created by default
+- **Multiple branches** allow developers to work independently without interfering with each other
+- **Merging** combines the commit history from one branch into another
+- Branches **continue to exist** after merging unless explicitly deleted
+- Branches enable **parallel development**, **experimentation**, and **feature isolation**
+
+<Note>
+In the next article, we'll explore [collaborative work](/docs/basics/git/collaborative-work) to see how branches facilitate team development and remote repository management.
+</Note>

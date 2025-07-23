@@ -1,0 +1,88 @@
+{
+    "metadata": {
+        "title": "CDA Valenciennes P2 - Documentation",
+        "description": "Comprehensive documentation for Application Developer Designer training created by the CDA-Valenciennes-P2 class."
+    },
+    "home": {
+        "follow_github": "Follow along on GitHub",
+        "main_header": "Complete documentation for Application Developer Designer training",
+        "sub_header": "Resources, guides and technical documentation created by the CDA-Valenciennes-P2 class to support your learning in application development.",
+        "get_started": "Get Started",
+        "read_blog": "Read Blog",
+        "name": "CDA Valenciennes P2"
+    },
+    "footer": {
+        "built_by": "Build by",
+        "source_code_available": "The source code is available on",
+        "deploy": "View Project"
+    },
+    "navbar": {
+        "links": {
+            "documentation": "Documentation",
+            "blog": "Blog",
+            "examples": "Examples",
+            "guides": "Guides",
+            "community": "Community"
+        },
+        "search": {
+            "search_documentation": "Search documentation...",
+            "no_results_found": " No results found for",
+            "type_something": "Type something to search..."
+        },
+        "theme": {
+            "light": "Light",
+            "dark": "Dark",
+            "system": "System"
+        }
+    },
+    "docs": {
+        "on_this_page": "On this page",
+        "next": "Next",
+        "previous": "Previous"
+    },
+    "not_found": {
+        "404": "404",
+        "page_not_found": "Page not found",
+        "sub_text": "Oops! The page you're looking for doesn't exist.",
+        "back_to_homepage": "Back to homepage"
+    },
+    "leftbar": {
+        "basics": "Basics",
+        "git": "Git",
+        "introduction": "Introduction",
+        "installation": "Installation",
+        "versioning": "Versioning",
+        "git_functions": "Git Functions",
+        "commands": "Commands",
+        "branches": "Branches",
+        "collaborative_work": "Collaborative Work",
+        "gitflow": "GitFlow",
+        "methodology": "Methodology",
+        "agile_method": "Agile Method",
+        "velocity": "Velocity",
+        "planning_poker": "Planning Poker",
+        "npm": "NPM",
+        "code_style": "Code Style",
+        "code_conventions": "Code Conventions",
+        "linter": "Linter",
+        "prettier": "Prettier",
+        "clean_code_references": "Clean Code References",
+        "conception": "Conception",
+        "get_started": "Get Started",
+        "pre_design": "Pre-Design"
+    },
+    "blog": {
+        "title": "The latest blogs of this product",
+        "sub_title": "All the latest blogs and news, straight from the team.",
+        "published_on": "Published on",
+        "back_to_blog": "Back to blog",
+        "posted_by": "Posted by"
+    },
+    "error": {
+        "oops": "Oops!",
+        "something_went_wrong": "Something went wrong.",
+        "sub_text": "We're sorry, but an error occurred while processing your request.",
+        "reload_page": "Reload Page",
+        "back_to_homepage": "Back to homepage"
+    }
+}
