@@ -24,7 +24,8 @@
       "Bash(gh pr checkout:*)",
       "Bash(git fetch:*)",
       "Bash(git merge:*)",
-      "Bash(npm run lint)"
+      "Bash(npm run lint)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }

@@ -31,6 +31,7 @@ const components = {
   Stepper,
   StepperItem,
   img: Image,
+  Image,
   a: Link,
   Outlet,
 };
