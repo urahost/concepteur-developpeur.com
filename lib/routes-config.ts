@@ -9,6 +9,14 @@ export type EachRoute = {
 
 export const ROUTES: EachRoute[] = [
   {
+    title: "getting_started",
+    href: "/getting-started",
+    noLink: true,
+    items: [
+      { title: "introduction", href: "/introduction" },
+    ],
+  },
+  {
     title: "basics",
     href: "/basics",
     noLink: true,
@@ -38,27 +46,6 @@ export const ROUTES: EachRoute[] = [
           { title: "planning_poker", href: "/planning-poker" },
         ],
       },
-      { title: "npm", href: "/npm" },
-    ],
-  },
-  {
-    title: "code_style",
-    href: "/code-style",
-    noLink: true,
-    items: [
-      { title: "code_conventions", href: "/code-conventions" },
-      { title: "linter", href: "/linter" },
-      { title: "prettier", href: "/prettier" },
-      { title: "clean_code_references", href: "/clean-code-references" },
-    ],
-  },
-  {
-    title: "conception",
-    href: "/conception",
-    noLink: true,
-    items: [
-      { title: "get_started", href: "/get-started" },
-      { title: "pre_design", href: "/pre-design" },
     ],
   },
 ];
