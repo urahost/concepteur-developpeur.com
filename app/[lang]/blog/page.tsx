@@ -82,7 +82,7 @@ function AvatarGroup({ users, max = 4 }: { users: Author[]; max?: number }) {
         >
           <AvatarImage src={user.avatar} alt={user.username} />
           <AvatarFallback>
-            {user.username.slice(0, 2).toUpperCase()}
+            {user.username?.slice(0, 2).toUpperCase() || "??"}
           </AvatarFallback>
         </Avatar>
       ))}

@@ -9,7 +9,11 @@
         "sub_header": "Ressources, guides et documentation technique créés par la promotion CDA-Valenciennes-P2 pour accompagner votre apprentissage en développement d'applications.",
         "get_started": "Commencer",
         "read_blog": "Lire le blog",
-        "name": "CDA Valenciennes P2"
+        "name": "CDA Valenciennes P2",
+        "hero_pill": {
+            "announcement": "🚀 Nouveau",
+            "label": "Panel Urahost mis à jour - Découvrez les nouveautés"
+        }
     },
     "footer": {
         "built_by": "Créé par",

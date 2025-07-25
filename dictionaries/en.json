@@ -9,7 +9,11 @@
         "sub_header": "Resources, guides and technical documentation created by the CDA-Valenciennes-P2 class to support your learning in application development.",
         "get_started": "Get Started",
         "read_blog": "Read Blog",
-        "name": "CDA Valenciennes P2"
+        "name": "CDA Valenciennes P2",
+        "hero_pill": {
+            "announcement": "🚀 New",
+            "label": "Urahost Panel Updated - Discover what's new"
+        }
     },
     "footer": {
         "built_by": "Build by",
