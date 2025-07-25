@@ -14,12 +14,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture Overview
 
-This is **AriaDocs** - a Next.js 15 internationalized documentation template with MDX support. The codebase implements a multi-language documentation system with blogs, nested routing, and comprehensive MDX processing.
+This is a **Next.js 15 internationalized documentation platform** for the CDA (Concepteur Développeur d'Applications) training program. Built on the AriaDocs template, it implements a multi-language documentation system with blogs, nested routing, and comprehensive MDX processing for French developer education resources.
 
 ### Core Architecture
 
 **Internationalization (i18n):**
-- Three supported locales: `en`, `fr`, `ja` (lib/locale.ts:1)
+- Two supported locales: `en`, `fr` (lib/locale.ts:1)
 - Middleware handles automatic locale detection and URL rewriting (middleware.ts:4)
 - Dictionary-based translations with React context (lib/dictionaries.ts:1, components/contexts/dictionary-provider.tsx)
 - All content is organized by language in `contents/` directory
@@ -84,3 +84,14 @@ contents/
 - React Context for dictionary and theme state
 - No external state management library required
 - Cached dictionary loading with React's `cache()` function
+
+## Project Specifics
+
+**Content Focus:**
+- Educational documentation for CDA program covering Git, methodologies, code quality, and conception
+- Structured learning modules: Fundamentals, Code Style, Conception, and Tools
+- Collaborative project originally created by CDA-Valenciennes-P2 promotion
+
+**Analytics:**
+- Vercel Analytics integration for usage tracking (components/ui/hero-pill.tsx)
+- Analytics component available for custom tracking needs
